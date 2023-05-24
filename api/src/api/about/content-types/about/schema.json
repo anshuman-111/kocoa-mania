@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

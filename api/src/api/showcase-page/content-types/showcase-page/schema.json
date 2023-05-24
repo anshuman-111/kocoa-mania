@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "showcase_pages",
+  "info": {
+    "singularName": "showcase-page",
+    "pluralName": "showcase-pages",
+    "displayName": "Showcase Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "typingwords": {
+      "type": "json"
+    },
+    "wordsbeforetyping": {
+      "type": "string"
+    },
+    "wordsaftertyping": {
+      "type": "string"
+    },
+    "showcaseImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
