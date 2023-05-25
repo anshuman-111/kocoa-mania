@@ -1,0 +1,59 @@
+{
+  "kind": "singleType",
+  "collectionName": "homes",
+  "info": {
+    "singularName": "home",
+    "pluralName": "homes",
+    "displayName": "Home",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "wbte": {
+      "type": "string"
+    },
+    "wate": {
+      "type": "string"
+    },
+    "typingeffect": {
+      "type": "json"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "address": {
+      "type": "string"
+    },
+    "classInfoTitle": {
+      "type": "string"
+    },
+    "classhours": {
+      "type": "string"
+    },
+    "classFees": {
+      "type": "string"
+    },
+    "openingHours": {
+      "type": "string"
+    },
+    "aboutDescription": {
+      "type": "text"
+    },
+    "aboutImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

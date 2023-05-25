@@ -34,6 +34,9 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "products"
+    },
+    "isFeatured": {
+      "type": "boolean"
     }
   }
 }

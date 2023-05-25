@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './css/style.css';
-import Hemlet, { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import {
   createBrowserRouter,
@@ -16,6 +16,7 @@ import Footer from './components/Footer/Footer';
 
 const Layout = () => {
   return (
+    <HelmetProvider>
     <div className='app'>
       <Helmet>
       <script src="https://kit.fontawesome.com/ec5c855e8d.js"></script>
@@ -32,6 +33,7 @@ const Layout = () => {
       <Outlet />
       <Footer />
     </div>
+    </HelmetProvider>
   )
 }
 

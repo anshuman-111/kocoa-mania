@@ -1,6 +1,7 @@
 import React from 'react'
-
+import useFetch from '../Hooks/useFetch'
 const Contact = () => {
+
   return (
       <section className="section contact pt-7 pb-7" id="contact">
         <h2 className="heading heading-secondary text-red">Contact Us</h2>

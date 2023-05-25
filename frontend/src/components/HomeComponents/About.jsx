@@ -1,5 +1,5 @@
 import React from 'react'
-
+import imgAbout from '../../assets/img/team/1.jpeg'
 const About = () => {
   return (
    // <!-- About Us -->
@@ -49,7 +49,7 @@ const About = () => {
           </h2>
           <div className="container reveal fade-left">
             <div className="about-founder--image">
-              <img src="../assets/img/team/1.jpeg" alt="Member 1" loading="lazy" />
+              <img src={imgAbout} alt="Member 1" loading="lazy" />
             </div>
             <article className="about-founder--text">
               <div className="about-founder--arrow"></div>

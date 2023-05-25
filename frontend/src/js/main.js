@@ -5,7 +5,7 @@ const closeBtn = document.querySelector('.close-gallery');
 // Page loader
 const loaderContainer = document.querySelector('.loader-container');
 window.addEventListener('load', () => {
-  loaderContainer.classList.add('hidden');
+  //loaderContainer.classList.add('hidden');
 });
 
 // Popup gallery
