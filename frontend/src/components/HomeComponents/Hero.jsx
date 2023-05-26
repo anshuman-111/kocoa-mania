@@ -1,17 +1,36 @@
 import React from 'react';
 import '../../css/style.css';
-import prod1 from '../../assets/img/products/product-1.jpeg';
-import prod2 from '../../assets/img/products/product-2.jpg';
-import prod3 from '../../assets/img/products/product-3.jpg';
-import prod4 from '../../assets/img/products/product-4.jpg';
+
 import ProductCard from '../ProductComponents/productCard';
 import ShowcaseCard from './ShowcaseCard';
 import useFetch from '../Hooks/useFetch';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Hero = ({HeroData}) => {
 
-  const { showcase, scLoading, scError } = 
-    useFetch(`/products?populate=*&[filters][isFeatured][$eq]=true`)
+  const [showcaseData, setShowcaseData] = useState([]);
+  const [scLoading, setScLoading] = useState(false);
+  const [scError, setScError] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setScLoading(true);
+        const res = await axios.get(import.meta.env.VITE_REACT_APP_API_URL +  `/products?populate=*&[filters][isFeatured][$eq]=true`, {
+          headers : {
+            Authorization: "bearer " + import.meta.env.VITE_REACT_APP_API_TOKEN
+          }
+        });
+        setShowcaseData(res.data.data);
+      } catch (err) {
+  
+        setScError(true);
+      }
+      setScLoading(false);
+    };
+    fetchData();
+  }, []);
   
   const { data, loading, error } = useFetch(
     `/products?populate=*&[filters][isNew][$eq]=true`
@@ -56,10 +75,10 @@ const Hero = ({HeroData}) => {
             <div className="swiper showcase-hero--slider">
               <div className="swiper-wrapper">
               {scError
-          ? console.log("Something went wrong!")
+          ? console.log(scError)
           : scLoading
           ? console.log("loading")
-          : showcase?.map((item) => <ShowcaseCard item={item} key={item.id} />
+          : showcaseData?.map((item) => <ShowcaseCard item={item} key={item.id} />
           )}
                 
               </div>

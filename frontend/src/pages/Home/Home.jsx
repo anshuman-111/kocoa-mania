@@ -4,7 +4,7 @@ import Categories from '../../components/HomeComponents/Categories'
 import Contact from '../../components/HomeComponents/Contact'
 import About from '../../components/HomeComponents/About'
 import useFetch from '../../components/Hooks/useFetch'
-const Home = ({HomeData}) => {
+const Home = () => {
   const {data, loading, error} = useFetch("/home?populate=*")
 
   const heroData = { 
@@ -27,8 +27,7 @@ const Home = ({HomeData}) => {
     classFees: data?.attributes?.classFees,
     openingHours: data?.attributes?.openingHours
   }
-  console.log(heroData)
-  console.log(data)
+ 
   return (
     <>
         <Hero HeroData={heroData}/>
