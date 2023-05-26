@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './css/style.css';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-
+import useFetch from './components/Hooks/useFetch';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -15,6 +15,7 @@ import Footer from './components/Footer/Footer';
 
 
 const Layout = () => {
+  
   return (
     <HelmetProvider>
     <div className='app'>
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home HomeData={HomeData}/>
       },
       {
         path: "/products",
@@ -58,6 +59,7 @@ const router = createBrowserRouter([
 ])
 
 function App() {
+  
   return (
     <div>
       <RouterProvider router={router} />

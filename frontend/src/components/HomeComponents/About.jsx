@@ -1,6 +1,6 @@
 import React from 'react'
 import imgAbout from '../../assets/img/team/1.jpeg'
-const About = () => {
+const About = ({AboutData}) => {
   return (
    // <!-- About Us -->
       <section className="section about" id="about">

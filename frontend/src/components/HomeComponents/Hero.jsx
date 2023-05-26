@@ -8,7 +8,7 @@ import ProductCard from '../ProductComponents/productCard';
 import ShowcaseCard from './ShowcaseCard';
 import useFetch from '../Hooks/useFetch';
 
-const Hero = () => {
+const Hero = ({HeroData}) => {
 
   const { showcase, scLoading, scError } = 
     useFetch(`/products?populate=*&[filters][isFeatured][$eq]=true`)
@@ -29,9 +29,9 @@ const Hero = () => {
           {/* <!-- showcase title --> */}
           <div className="showcase-title text-center">
             <h1 className="heading heading-primary text-white">
-              Creating <span className="text-larger"></span
+              {HeroData.wbte} <span className="text-larger"></span
               ><span className="cursor">|</span>,<br />
-              One Slice at a Time
+              {HeroData.wate}
             </h1>
             <a
               href="https://wa.me/919748217878/?text=Hello! I'm inquiring about your cakes. Could you please provide me with information on the flavors, sizes, and prices available?"
