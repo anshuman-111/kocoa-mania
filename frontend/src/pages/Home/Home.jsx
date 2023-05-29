@@ -4,6 +4,8 @@ import Categories from '../../components/HomeComponents/Categories'
 import Contact from '../../components/HomeComponents/Contact'
 import About from '../../components/HomeComponents/About'
 import useFetch from '../../components/Hooks/useFetch'
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
 const Home = () => {
   const {data, loading, error} = useFetch("/home?populate=*")
 
@@ -30,10 +32,12 @@ const Home = () => {
  
   return (
     <>
+        <Navbar />
         <Hero HeroData={heroData}/>
         <Categories />
         <About AboutData={aboutData} />
         <Contact ContactData={contactData}/>
+        <Footer />
     </>
   )
 }

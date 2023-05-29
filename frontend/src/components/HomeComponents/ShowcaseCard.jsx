@@ -1,9 +1,6 @@
 import React from 'react'
 
 const ShowcaseCard = ({item}) => {
-
-  console.log(import.meta.env.VITE_STRAPI_UPLOAD_URL + item.attributes?.image?.data?.attributes?.url)
-
   return (
     <figure className="swiper-slide">
           <img

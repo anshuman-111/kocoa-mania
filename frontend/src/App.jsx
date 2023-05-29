@@ -1,23 +1,19 @@
-import { useState } from 'react'
 import './css/style.css';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import useFetch from './components/Hooks/useFetch';
 import {
-  createBrowserRouter,
-  RouterProvider,
   Route,
-  Outlet
+  Routes
 } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
 
 
-const Layout = () => {
+
+function App() {
   
   return (
-    <HelmetProvider>
+    <div className='App'>
+      <HelmetProvider>
     <div className='app'>
       <Helmet>
       <script src="https://kit.fontawesome.com/ec5c855e8d.js"></script>
@@ -25,44 +21,20 @@ const Layout = () => {
  
   <script src="/src/js/index.js"></script>
   <script src="/src/js/main.js"></script>
+  <script src="/src/js/product.js"></script>
+
   <script>
     let textArr = ["abcd", "defg", "rewwerw"]
   </script>
       </Helmet>
-      
-      <Navbar />
-      <Outlet />
-      <Footer />
     </div>
     </HelmetProvider>
-  )
-}
-
-
-
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element:<Layout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />
-      },
-      {
-        path: "/products",
-        element: <Products />
-      },
-    ],
-  }
-])
-
-function App() {
-  
-  return (
-    <div>
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/products/:category' element={<Products />}/>
+      </Routes>
+      
       <script src='../../js/index.js'></script>
     </div>
   )

@@ -1,11 +1,11 @@
 import React from 'react';
 import '../../css/style.css';
-
 import ProductCard from '../ProductComponents/productCard';
 import ShowcaseCard from './ShowcaseCard';
 import useFetch from '../Hooks/useFetch';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Hero = ({HeroData}) => {
 
@@ -13,6 +13,56 @@ const Hero = ({HeroData}) => {
   const [scLoading, setScLoading] = useState(false);
   const [scError, setScError] = useState(false);
 
+  // const txtUpdatingSpeed = 55;
+  // const blinkAnimDuration = 2400;
+  // let currentTextIndex = -1;
+  // let wordsArr = HeroData.typingeffect
+  // console.log(wordsArr)
+  
+  // FIX TYPING EFFECT
+
+  // const addLetter = letterIndex => {
+  //   if (letterIndex >= wordsArr[currentTextIndex].length) {
+  //     blinkTypeCursor();
+  //     return;
+  //   }
+  //   setTimeout(() => {
+  //     myText.textContent += wordsArr[currentTextIndex][letterIndex];
+  //     addLetter(letterIndex + 1);
+  //   }, txtUpdatingSpeed);
+  // };
+  
+  // const removeLetter = letterIndex => {
+  //   if (letterIndex < 0) {
+  //     updateText();
+  //     return;
+  //   }
+  //   setTimeout(() => {
+  //     myText.textContent = wordsArr[currentTextIndex].slice(0, letterIndex);
+  //     removeLetter(letterIndex - 1);
+  //   }, txtUpdatingSpeed);
+  // };
+  
+  // const blinkTypeCursor = () => {
+  //   typeCursor.classList.add('blinking');
+  //   setTimeout(() => {
+  //     typeCursor.classList.remove('blinking');
+  //     removeLetter(wordsArr[currentTextIndex].length);
+  //   }, blinkAnimDuration);
+  // };
+  
+  // const updateText = () => {
+  //   currentTextIndex++;
+  //   if (currentTextIndex === wordsArr.length) {
+  //     currentTextIndex = 0;
+  //   }
+  //   addLetter(0);
+  // };
+  
+  // setTimeout(() => updateText(), 1000);
+
+
+  // API CALL FOR SHOWCASE IMAGES
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,6 +82,8 @@ const Hero = ({HeroData}) => {
     fetchData();
   }, []);
   
+  // API CALL FOR PRODUCTS ON PAGE
+
   const { data, loading, error } = useFetch(
     `/products?populate=*&[filters][isNew][$eq]=true`
   );
@@ -60,6 +112,7 @@ const Hero = ({HeroData}) => {
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
               Enquire Now
             </a>
+            <Link to="/products">
             <a
               href="products.html"
               className="btn btn-primary btn-white"
@@ -68,6 +121,8 @@ const Hero = ({HeroData}) => {
               <i className="fab fa-safari"></i>
               Browse Cakes
             </a>
+            </Link>
+           
           </div>
 
           {/* <!-- Showcase hero --> */}
@@ -75,9 +130,9 @@ const Hero = ({HeroData}) => {
             <div className="swiper showcase-hero--slider">
               <div className="swiper-wrapper">
               {scError
-          ? console.log(scError)
+          ? "Oops! Something went wrong"
           : scLoading
-          ? console.log("loading")
+          ? "Loading ..."
           : showcaseData?.map((item) => <ShowcaseCard item={item} key={item.id} />
           )}
                 

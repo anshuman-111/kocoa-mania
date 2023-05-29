@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ProductCard = ({item}) => {
+
   return (
     <figure className="swiper-slide card">
                 <div className="card-image">
