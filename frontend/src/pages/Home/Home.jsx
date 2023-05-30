@@ -1,17 +1,15 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Hero from '../../components/HomeComponents/Hero'
 import Categories from '../../components/HomeComponents/Categories'
 import Contact from '../../components/HomeComponents/Contact'
 import About from '../../components/HomeComponents/About'
-import useFetch from '../../components/Hooks/useFetch'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
-const Home = () => {
-  const {data, loading, error} = useFetch("/home?populate=*")
-
+const Home = ({data}) => {
+  
+  
   const heroData = { 
     wbte: data?.attributes?.wbte,
-    typingeffect: data?.attributes?.typingeffect?.words,
     wate: data?.attributes?.wate,
   }
 
@@ -32,12 +30,14 @@ const Home = () => {
  
   return (
     <>
+        <Suspense>
         <Navbar />
         <Hero HeroData={heroData}/>
         <Categories />
         <About AboutData={aboutData} />
         <Contact ContactData={contactData}/>
         <Footer />
+        </Suspense>
     </>
   )
 }

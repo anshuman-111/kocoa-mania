@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ProductCard = ({item}) => {
+  
 
   return (
     <figure className="swiper-slide card">
@@ -14,7 +15,9 @@ const ProductCard = ({item}) => {
                 </div>
                 <figcaption className="card-details">
                   <div className="card-details--info">
-                    <h3>{item?.attributes?.title}</h3>
+                    <h3>{item?.attributes?.title.toString().length > 20 ? item?.attributes?.title.slice(0,20).padEnd(24,' ...') : 
+                    item?.attributes?.title
+                    }</h3>
                     <p>{item?.attributes?.isNew}</p>
                   </div>
                   <div className="card-details--button">
@@ -24,7 +27,8 @@ const ProductCard = ({item}) => {
                     <a href="whatsapp://send?text=" data-acttion='share/whatsapp/share' title="Share">
                       <i className="fa fa-share-alt" aria-hidden="true"></i>
                     </a>
-                    {item?.attributes.isNew && <div>NEW!</div>}
+                    {/* Add NEW badge */}
+                    {/* {item?.attributes.isNew && <div>NEW!</div>} */}
                   </div>
                 </figcaption>
               </figure>

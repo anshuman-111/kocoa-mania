@@ -88,8 +88,9 @@ const Hero = ({HeroData}) => {
     `/products?populate=*&[filters][isNew][$eq]=true`
   );
 
+  
 
-
+  console.log(data)
   return (
     // <!-- Home -->
     <section className="section home" id="home">

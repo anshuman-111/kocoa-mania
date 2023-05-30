@@ -10,6 +10,7 @@ const About = ({AboutData}) => {
   // Add image sharing option for Whatsapp Link
   // Image pre-load with Whatsapp Link
 
+  
 
   const {data, loading, error } = useFetch('/testimonials?populate=*')
   console.log(data)
@@ -55,7 +56,8 @@ const About = ({AboutData}) => {
             <article className="about-founder--text">
               <div className="about-founder--arrow"></div>
               <p>
-                {AboutData.aboutDescription}
+                {/* {AboutData.aboutDescription} */}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque maxime fugiat quod cupiditate perferendis error eveniet ullam facere consequatur maiores nemo amet quas, facilis deserunt. Saepe officia nihil sunt cum, sed incidunt illo sint quod non officiis. Accusantium similique soluta error mollitia tempora iste magnam aliquam quidem autem unde reprehenderit molestias in harum asperiores ducimus totam reiciendis consequuntur ad commodi eos et, minus modi eveniet! Culpa assumenda facilis voluptatibus modi error corporis veritatis adipisci quo temporibus dolorem quos aspernatur ut nihil debitis consequatur, ducimus fuga quam nulla, non amet? Fuga vitae totam accusantium aperiam dolores odit, rerum quasi quod ut.
               </p>
             </article>
           </div>

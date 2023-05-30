@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import useFetch from '../Hooks/useFetch'
 import ProductCard from './productCard'
-const ProductDisplay = ({category}) => {
-
-    console.log({category})
-    const {data, loading, error} = useFetch(`/products?populate=*&[filters][categories][title][$eq]=${category}`)
-
+const ProductDisplay = ({category}, searchParams=null) => {
+  
+  const [urlFilter, setUrlFilter] = useState("populate=*");
+  useEffect(()=>{
+    if(Object.keys(category).length !== 0 || category !== ''){ 
+      setUrlFilter(`populate=*&[filters][categories][title][$eq]=${category}`)
+    }
+  })
+  const {data, loading, error} = useFetch(`/products?${urlFilter}`)
+ 
+    console.log(category)
+    
+    
+    console.log(urlFilter)
   return (
     <section className="tab-content">
           <div className="tab-item active" data-tab="tab-1">
@@ -30,6 +39,7 @@ const ProductDisplay = ({category}) => {
             </div>
           </div> */}
     </section>
+
   )
 }
 

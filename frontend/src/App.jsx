@@ -6,15 +6,17 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
+import useFetch from './components/Hooks/useFetch';
 
 
 
 function App() {
-  
+
+  const {data, loading, error} = useFetch("/home?populate=*")
   return (
     <div className='App'>
+      <div>
       <HelmetProvider>
-    <div className='app'>
       <Helmet>
       <script src="https://kit.fontawesome.com/ec5c855e8d.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
@@ -27,15 +29,14 @@ function App() {
     let textArr = ["abcd", "defg", "rewwerw"]
   </script>
       </Helmet>
-    </div>
     </HelmetProvider>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home data={data} />} />
         <Route path='/products' element={<Products />} />
         <Route path='/products/:category' element={<Products />}/>
       </Routes>
-      
-      <script src='../../js/index.js'></script>
+      </div>
+      {/* <script src='../../js/index.js'></script> */}
     </div>
   )
 }

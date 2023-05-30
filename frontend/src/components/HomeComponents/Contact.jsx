@@ -1,7 +1,7 @@
 import React from 'react'
 import useFetch from '../Hooks/useFetch'
 const Contact = ({ContactData}) => {
-
+  //Change the contact for multiple classes
   return (
       <section className="section contact pt-7 pb-7" id="contact">
         <h2 className="heading heading-secondary text-red">Contact Us</h2>
@@ -35,7 +35,7 @@ const Contact = ({ContactData}) => {
                 <h4 className="heading heading-tertiary text-red">Address</h4>
                 <p>{ContactData.address}</p>
               </address>
-{/*      <!-- Social icons --> */}
+              {/* <!-- Social icons --> */}
               <div className="contact-info--social-icons">
                 <a href="#" title="Facebook" className="btn btn-secondary">
                   <i className="fa fa-facebook" aria-hidden="true"></i>
