@@ -32,24 +32,7 @@ const Products = () => {
   const {data, loading, error} = useFetch('/categories?populate[0]=title')
 
   // Getting all products for search through tags
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setProdLoading(true);
-        const res = await axios.get(import.meta.env.VITE_REACT_APP_API_URL +  `/products?populate[0]=title&populate[1]=image`, {
-          headers : {
-            Authorization: "bearer " + import.meta.env.VITE_REACT_APP_API_TOKEN
-          }
-        });
-        setProductSearch(res.data.data);
-      } catch (err) {
   
-        setProdError(true);
-      }
-      setProdLoading(false);
-    };
-    fetchData();
-  }, []);
 
 
 
@@ -69,7 +52,7 @@ const Products = () => {
 
   return (
     <div className="wrapper">
-      <Suspense fallback={<div> Loading ... </div>}>
+      
 
 
       {/* <!-- Side navigation --> */}
@@ -128,11 +111,11 @@ const Products = () => {
           />
           <input type="submit" value='Search'/>
         </section>
-        
+        <Suspense fallback={<div> Loading ... </div>}>
         {/* <!-- Tab content --> */}
           <ProductDisplay category={categorySelection} />
-      </main> 
       </Suspense>
+      </main> 
     </div>
 
   )

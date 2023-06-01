@@ -1,16 +1,42 @@
-import React, { useState, useEffect } from 'react'
-import useFetch from '../Hooks/useFetch'
+import React, { useState, useEffect, useReducer } from 'react'
 import ProductCard from './productCard'
+import axios from 'axios'
+
 const ProductDisplay = ({category}, searchParams=null) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [urlFilter, setUrlFilter] = useState("");
+
   
-  const [urlFilter, setUrlFilter] = useState("populate=*");
-  useEffect(()=>{
-    if(Object.keys(category).length !== 0 || category !== ''){ 
-      setUrlFilter(`populate=*&[filters][categories][title][$eq]=${category}`)
+  useEffect(() => {
+    if(Object.keys(category).length !== 0 || category !== ''){
+      if (urlFilter === ""){
+        setTimeout(()=>{
+          setUrlFilter('populate=*')
+        }, 500)
+      } else {
+        setUrlFilter(`populate=*&[filters][categories][title][$eq]=${category}`)
+      }
     }
-  })
-  const {data, loading, error} = useFetch(`/products?${urlFilter}`)
- 
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get(import.meta.env.VITE_REACT_APP_API_URL +  `/products?${urlFilter}`, {
+          headers : {
+            Authorization: "bearer " + import.meta.env.VITE_REACT_APP_API_TOKEN
+          }
+        });
+        setData(res.data.data);
+      } catch (err) {
+  
+        setError(true);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, [urlFilter]);
+
     console.log(category)
     
     
