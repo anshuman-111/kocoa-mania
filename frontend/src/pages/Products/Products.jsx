@@ -5,6 +5,7 @@ import useFetch from '../../components/Hooks/useFetch'
 import ProductDisplay from '../../components/ProductComponents/ProductDisplay'
 import Logo from '../../assets/img/logo.png';
 import loadScript from '../../components/Hooks/loadScript'
+import axios from 'axios'
 const Products = () => {
   
   useEffect(() => {
@@ -18,41 +19,79 @@ const Products = () => {
   // Setting states for Search
   const [searchInput, setSearchInput] = useState('')
   const [active, setActive] = useState()
-
-
-  let tagList = []
-  let filteredProducts = []
+  const [fetchedList, setFetchedList] = useState([])
+  const [searchList, setSearchList] = useState([])
   // Category Selection states from URL or From Side Nav
   const [categorySelection, setSelection] = useState()
   const categoryTitle = useParams().category
 
+   // Setting category state from params
   useEffect(()=>{
     if(categoryTitle!=='undefined'){
       setSelection(categoryTitle)
     }
   },[categoryTitle])
 
-  // Setting category state from params
+ 
     const handleCategoryClick = (e,title) => {
       setActive(e.currentTarget)
       setSelection(title)
     }
 
-    console.log(categorySelection)
 
   // API Call for getting categories for side nav
   const {data, loading, error} = useFetch('/categories?populate[0]=title')
 
   // Getting all products for search through tags
-  //const {tags, tagLoading, tagError } = useFetch('/tags?populate[0]=tagname')
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(import.meta.env.VITE_REACT_APP_API_URL +  `/products?populate=*`, {
+          headers : {
+            Authorization: "bearer " + import.meta.env.VITE_REACT_APP_API_TOKEN
+          }
+        });
+        setFetchedList(res.data.data);
+      } catch (err) {
+  
+        console.log(err);
+      }
+    };
+    fetchData();
+  },[]);
+ 
+ 
+  let suggestions = new Set()
   if (searchInput !== ''){
-    // filteredProducts = productSearch.filter( item => {
-    //   return item.includes(searchInput.toLowerCase())
-    // }
-    //)
-    console.log(searchInput)
+    fetchedList.forEach(item => {
+
+      if (item?.attributes?.title?.toLowerCase().includes(searchInput.toLowerCase())){
+        suggestions.add(item)
+      }
+
+      item?.attributes?.categories?.data?.forEach(cat => {
+        if(cat?.attributes?.title?.toLowerCase().includes(searchInput.toLowerCase())){
+          suggestions.add(item)
+        }
+      })
+
+      item?.attributes?.tags?.data?.forEach(tag => {
+        if(tag.attributes.tagname.toLowerCase().includes(searchInput.toLowerCase())){
+          suggestions.add(item)
+        }
+      })
+    });
+    
+  }else{
+    suggestions = new Set()
   }
+  console.log(suggestions)
+
+  const handleSearchSubmit = () => {
+    setSearchList([...suggestions])
+  }
+  console.log(searchList)
+  
   return (
     <div className="wrapper">
       {/* <!-- Side navigation --> */}
@@ -110,11 +149,11 @@ const Products = () => {
             onChange={e => 
               setSearchInput(e.target.value)}
           />
-          <input type="submit" value='Search'/>
+          <input type="submit" value='Search' onClick={handleSearchSubmit}/>
         </section>
         
         {/* <!-- Tab content --> */}
-          <ProductDisplay category={categorySelection} />
+          <ProductDisplay category={categorySelection} searchList={searchList} />
       </main> 
     </div>
 
