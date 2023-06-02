@@ -6,14 +6,15 @@ import ProductDisplay from '../../components/ProductComponents/ProductDisplay'
 import Logo from '../../assets/img/logo.png';
 import loadScript from '../../components/Hooks/loadScript'
 import axios from 'axios'
+import SearchResults from '../../components/ProductComponents/SearchResults'
 const Products = () => {
   
   useEffect(() => {
    
+    loadScript('/src/js/product.js');
+    loadScript('/src/js/main.js');
     loadScript("https://kit.fontawesome.com/ec5c855e8d.js");
     loadScript('https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js');
-    loadScript('/src/js/main.js');
-    loadScript('/src/js/product.js');
 }, [])
 
   // Setting states for Search
@@ -33,9 +34,10 @@ const Products = () => {
   },[categoryTitle])
 
  
-    const handleCategoryClick = (e,title) => {
-      setActive(e.currentTarget)
+    const handleCategoryClick = (title) => {
+      setSearchList([])
       setSelection(title)
+
     }
 
 
@@ -85,12 +87,11 @@ const Products = () => {
   }else{
     suggestions = new Set()
   }
-  console.log(suggestions)
 
   const handleSearchSubmit = () => {
     setSearchList([...suggestions])
   }
-  console.log(searchList)
+
   
   return (
     <div className="wrapper">
@@ -121,7 +122,9 @@ const Products = () => {
           : loading
           ? "Loading ..."
           : data?.map((item) => 
-          <li key={item?.id} className={active} onClick={(e)=>{handleCategoryClick(e,item?.attributes?.title)}}>
+          <li key={item?.id} className={active} onClick={(e)=>{
+            handleCategoryClick(item?.attributes?.title)
+            }}>
 
 
             {/* FIX ACTIVE ELEMENT  */}
@@ -149,11 +152,16 @@ const Products = () => {
             onChange={e => 
               setSearchInput(e.target.value)}
           />
-          <input type="submit" value='Search' onClick={handleSearchSubmit}/>
+          <input type="submit" value='Search' onClick={handleSearchSubmit}
+           />
         </section>
         
         {/* <!-- Tab content --> */}
-          <ProductDisplay category={categorySelection} searchList={searchList} />
+        {searchList.length < 1 ?  
+        <ProductDisplay category={categorySelection} /> :
+        <SearchResults searchList={searchList}/>
+        }
+          
       </main> 
     </div>
 
