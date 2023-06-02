@@ -13,7 +13,7 @@ const About = ({AboutData}) => {
   
 
   const {data, loading, error } = useFetch('/testimonials?populate=*')
-  console.log(data)
+
   return (
    // <!-- About Us -->
       <section className="section about" id="about">
@@ -30,7 +30,7 @@ const About = ({AboutData}) => {
           : loading
           ? "Loading ..."
           : data?.map((item) =>
-              <blockquote className="swiper-slide quote">
+              <blockquote className="swiper-slide quote" key={item.id}>
               <p>
                 {item?.attributes?.content} <br />
                 <span className="name">{item?.attributes?.author}</span>

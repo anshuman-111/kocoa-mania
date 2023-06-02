@@ -2,34 +2,34 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer class="footer pt-3 pb-3">
-    <div class="container">
+    <footer className="footer pt-3 pb-3">
+    <div className="container">
       {/* <!-- Footer logo --> */}
-      <div class="footer-logo">
-        <a href="index.html" class="logo" title="Kocoa Mania">
+      <div className="footer-logo">
+        <a href="index.html" className="logo" title="Kocoa Mania">
           <img src="dist/img/logo.png" alt="kocoamania" loading="lazy" />
         </a>
       </div>
-      <div class="text-center">
-        <div class="footer-nav pb-2">
-          <a href="#home" title="Home" class="scrollTo">Home</a>
-          <a href="#categories" title="Products" class="scrollTo">Products</a>
-          <a href="#about" title="About Us" class="scrollTo">About Us</a>
-          <a href="#contact" title="Contact Us" class="scrollTo"
+      <div className="text-center">
+        <div className="footer-nav pb-2">
+          <a href="#home" title="Home" className="scrollTo">Home</a>
+          <a href="#categories" title="Products" className="scrollTo">Products</a>
+          <a href="#about" title="About Us" className="scrollTo">About Us</a>
+          <a href="#contact" title="Contact Us" className="scrollTo"
             >Contact Us</a
           >
         </div>
-        <div class="copyright">
+        <div className="copyright">
           <p>
-            Copyright &copy; <span class="year"></span> All rights reserved. |
-            <a href="#" class="popup-show" title="Privacy policy"
+            Copyright &copy; <span className="year"></span> All rights reserved. |
+            <a href="#" className="popup-show" title="Privacy policy"
               >Privacy policy</a
             >
           </p>
         </div>
       </div>
       {/* <!-- FSSAI logo --> */}
-      <div class="footer-fssai-logo">
+      <div className="footer-fssai-logo">
         <a
           href="certificate/REG-CERTIFICATE.pdf"
           title="Kocoa Mania FSSAI Certificate"

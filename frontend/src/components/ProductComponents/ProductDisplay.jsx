@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect } from 'react'
 import ProductCard from './productCard'
 import axios from 'axios'
 
@@ -7,10 +7,8 @@ const ProductDisplay = ({category}, searchParams=null) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [urlFilter, setUrlFilter] = useState("");
-
-  
-  useEffect(() => {
-    if(Object.keys(category).length !== 0 || category !== ''){
+  useEffect(()=>{
+    if(category !== ''){
       if (urlFilter === ""){
         setTimeout(()=>{
           setUrlFilter('populate=*')
@@ -19,6 +17,11 @@ const ProductDisplay = ({category}, searchParams=null) => {
         setUrlFilter(`populate=*&[filters][categories][title][$eq]=${category}`)
       }
     }
+  },[category])
+
+
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -37,10 +40,7 @@ const ProductDisplay = ({category}, searchParams=null) => {
     fetchData();
   }, [urlFilter]);
 
-    console.log(category)
     
-    
-    console.log(urlFilter)
   return (
     <section className="tab-content">
           <div className="tab-item active" data-tab="tab-1">
@@ -52,18 +52,6 @@ const ProductDisplay = ({category}, searchParams=null) => {
           : data?.map((item) => <ProductCard item={item} key={item.id} />)}
             </div>
           </div>
-
-          {/* <div className="tab-item" data-tab="tab-2">
-            <div className="products">
-             <!-- Put the cards here --> 
-            </div>
-          </div>
-
-          <div className="tab-item" data-tab="tab-3">
-            <div className="products">
-               <!-- Put the cards here --> 
-            </div>
-          </div> */}
     </section>
 
   )
