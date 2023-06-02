@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import ProductCard from './productCard'
 import axios from 'axios'
 
-const ProductDisplay = ({category}, {searchList}) => {
+const ProductDisplay = ({category}) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [urlFilter, setUrlFilter] = useState("");
-  console.log(searchList)
+  
   useEffect(()=>{
     if(category !== ''){
       if (urlFilter === ""){
