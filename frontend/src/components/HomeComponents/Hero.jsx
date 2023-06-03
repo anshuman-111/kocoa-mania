@@ -64,15 +64,9 @@ const Hero = ({HeroData}) => {
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
               Enquire Now
             </a>
-            <Link to="/products">
-            <a
-              href="products.html"
-              className="btn btn-primary btn-white"
-              title="Browse Cakes"
-            >
+            <Link to="/products" className="btn btn-primary btn-white"  title="Browse Cakes">
               <i className="fab fa-safari"></i>
               Browse Cakes
-            </a>
             </Link>
            
           </div>

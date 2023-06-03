@@ -3,11 +3,11 @@ import Logo from '../../assets/img/logo.png';
 const Navbar = () => {
   return (
     <header className="header">
-      <div class="mobile-nav nav">
-      <a href="#home" title="Home" class="scrollTo">Home</a>
-      <a href="#categories" title="Products" class="scrollTo">Products</a>
-      <a href="#about" title="About Us" class="scrollTo">About Us</a>
-      <a href="#contact" title="Contact Us" class="scrollTo">Contact Us</a>
+      <div className="mobile-nav nav">
+      <a href="#home" title="Home" className="scrollTo">Home</a>
+      <a href="#categories" title="Products" className="scrollTo">Products</a>
+      <a href="#about" title="About Us" className="scrollTo">About Us</a>
+      <a href="#contact" title="Contact Us" className="scrollTo">Contact Us</a>
     </div>
       <div className="container">
         {/* Logo */}

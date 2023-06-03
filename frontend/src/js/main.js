@@ -1,18 +1,18 @@
-const displayPopup = document.querySelectorAll('.popup');
-const overlay = document.querySelector('.overlay');
-const closeBtn = document.querySelector('.close-gallery');
+var displayPopup = document.querySelectorAll('.popup');
+var overlay = document.querySelector('.overlay');
+var closeBtn = document.querySelector('.close-gallery');
 
 // Page loader
-const loaderContainer = document.querySelector('.loader-container');
+var loaderContainer = document.querySelector('.loader-container');
 window.addEventListener('load', () => {
   //loaderContainer.classList.add('hidden');
 });
 
 // Popup gallery
-const openModal = function () {
+var openModal = function () {
   overlay.classList.remove('gallery-hidden');
 };
-const closeModal = function () {
+var closeModal = function () {
   overlay.classList.add('gallery-hidden');
 };
 for (let i = 0; i < displayPopup.length; i++) {

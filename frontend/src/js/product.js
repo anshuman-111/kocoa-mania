@@ -1,10 +1,10 @@
 'use strict';
 
-const sideNav = document.querySelector('.side-nav');
-const navArrow = document.querySelector('.fa-arrow-right');
-const tabLinks = document.querySelectorAll('.tab-links a');
-const tabItems = document.querySelectorAll('.tab-item');
-const navOpenBtn = document.querySelector('.nav-open');
+var sideNav = document.querySelector('.side-nav');
+var navArrow = document.querySelector('.fa-arrow-right');
+var tabLinks = document.querySelectorAll('.tab-links a');
+var tabItems = document.querySelectorAll('.tab-item');
+var navOpenBtn = document.querySelector('.nav-open');
 
 // Product tabs
 tabLinks.forEach(link => {
@@ -25,6 +25,7 @@ tabLinks.forEach(link => {
       .classList.add('active');
 
     if (sideNav.classList.contains('nav-hidden')) {
+      console.log(sideNav)
       sideNav.classList.remove('nav-hidden');
       navArrow.classList.toggle('rotate');
     }

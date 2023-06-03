@@ -8,15 +8,11 @@ import loadScript from '../../components/Hooks/loadScript'
 import axios from 'axios'
 import SearchResults from '../../components/ProductComponents/SearchResults'
 const Products = () => {
-  
-  useEffect(() => {
-   
-    loadScript('/src/js/product.js');
-    loadScript('/src/js/main.js');
-    loadScript("https://kit.fontawesome.com/ec5c855e8d.js");
-    loadScript('https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js');
-}, [performance.navigation.type])
 
+
+  
+
+  
   // Setting states for Search
   const [searchInput, setSearchInput] = useState('')
   const [active, setActive] = useState()
@@ -106,16 +102,12 @@ const Products = () => {
         <div className="row-top">
           
           {/* Center the logo  */}
-          <Link to={'/'}>
-          <a href="index.html" className="logo" title="Kocoa Mania">
+          <Link to={'/'} className="logo"  title="Kocoa Mania">
             <img src={Logo} alt="kocoamania" loading="lazy" />
-          </a>
           </Link>
-          <Link to={'/'}>
-          <a href="index.html" title="Back to Home"
-            ><i className="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to
-            Home</a
-          >
+          <Link to={'/'} title="Back to Home">
+            <i className="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to
+            Home
             </Link>
         </div>
         <div className="tabs row-bottom">

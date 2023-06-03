@@ -36,13 +36,8 @@ const Categories = () => {
 
         </div>
         <div className="text-center pt-5">
-        <Link to='/products'>
-        <a
-            href="products.html"
-            title="View More"
-            className="btn btn-primary btn-red"
-          >
-          <i className="fa fa-plus-circle" aria-hidden="true"></i> View More</a>
+        <Link to='/products' className="btn btn-primary btn-red"  title="View More">
+          <i className="fa fa-plus-circle" aria-hidden="true"></i> View More
         </Link>
          
         </div>
