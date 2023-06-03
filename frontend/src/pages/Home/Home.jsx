@@ -8,6 +8,7 @@ import Footer from '../../components/Footer/Footer'
 import { useNavigate } from 'react-router-dom'
 import loadScript from '../../components/Hooks/loadScript'
 const Home = ({data}) => {
+  
   useEffect(() => {
    
     loadScript("https://kit.fontawesome.com/ec5c855e8d.js");

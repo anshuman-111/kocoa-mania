@@ -15,7 +15,7 @@ const Products = () => {
     loadScript('/src/js/main.js');
     loadScript("https://kit.fontawesome.com/ec5c855e8d.js");
     loadScript('https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js');
-}, [])
+}, [performance.navigation.type])
 
   // Setting states for Search
   const [searchInput, setSearchInput] = useState('')
@@ -35,8 +35,11 @@ const Products = () => {
 
  
     const handleCategoryClick = (title) => {
+      setTimeout(()=>{
+        setSelection(title)
+      },1000)
+      
       setSearchList([])
-      setSelection(title)
 
     }
 

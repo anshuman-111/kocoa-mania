@@ -12,56 +12,7 @@ const Hero = ({HeroData}) => {
   const [showcaseData, setShowcaseData] = useState([]);
   const [scLoading, setScLoading] = useState(false);
   const [scError, setScError] = useState(false);
-
-  // const txtUpdatingSpeed = 55;
-  // const blinkAnimDuration = 2400;
-  // let currentTextIndex = -1;
-  // let wordsArr = HeroData.typingeffect
-  // console.log(wordsArr)
   
-  // FIX TYPING EFFECT
-
-  // const addLetter = letterIndex => {
-  //   if (letterIndex >= wordsArr[currentTextIndex].length) {
-  //     blinkTypeCursor();
-  //     return;
-  //   }
-  //   setTimeout(() => {
-  //     myText.textContent += wordsArr[currentTextIndex][letterIndex];
-  //     addLetter(letterIndex + 1);
-  //   }, txtUpdatingSpeed);
-  // };
-  
-  // const removeLetter = letterIndex => {
-  //   if (letterIndex < 0) {
-  //     updateText();
-  //     return;
-  //   }
-  //   setTimeout(() => {
-  //     myText.textContent = wordsArr[currentTextIndex].slice(0, letterIndex);
-  //     removeLetter(letterIndex - 1);
-  //   }, txtUpdatingSpeed);
-  // };
-  
-  // const blinkTypeCursor = () => {
-  //   typeCursor.classList.add('blinking');
-  //   setTimeout(() => {
-  //     typeCursor.classList.remove('blinking');
-  //     removeLetter(wordsArr[currentTextIndex].length);
-  //   }, blinkAnimDuration);
-  // };
-  
-  // const updateText = () => {
-  //   currentTextIndex++;
-  //   if (currentTextIndex === wordsArr.length) {
-  //     currentTextIndex = 0;
-  //   }
-  //   addLetter(0);
-  // };
-  
-  // setTimeout(() => updateText(), 1000);
-
-
   // API CALL FOR SHOWCASE IMAGES
   useEffect(() => {
     const fetchData = async () => {
@@ -90,7 +41,7 @@ const Hero = ({HeroData}) => {
 
   
 
-  console.log(data)
+ 
   return (
     // <!-- Home -->
     <section className="section home" id="home">

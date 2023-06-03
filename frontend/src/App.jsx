@@ -17,7 +17,6 @@ function App() {
   const {data, loading, error} = useFetch("/home?populate=*")
   const location = useLocation();
 
-
   return (
     <div className='App'>
       <div>
