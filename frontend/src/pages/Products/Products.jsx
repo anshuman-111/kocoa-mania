@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import useFetch from '../../components/Hooks/useFetch'
 import ProductDisplay from '../../components/ProductComponents/ProductDisplay'
 import Logo from '../../assets/img/logo.png';
-import loadScript from '../../components/Hooks/loadScript'
 import axios from 'axios'
 import SearchResults from '../../components/ProductComponents/SearchResults'
 const Products = () => {
@@ -33,7 +32,7 @@ const Products = () => {
     const handleCategoryClick = (title) => {
       setTimeout(()=>{
         setSelection(title)
-      },1000)
+      },600)
       
       setSearchList([])
 

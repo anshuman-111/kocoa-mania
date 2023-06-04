@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/style.css';
-import ProductCard from '../ProductComponents/productCard';
+import ProductCard from '../ProductComponents/ProductCard';
 import ShowcaseCard from './ShowcaseCard';
 import useFetch from '../Hooks/useFetch';
 import { useEffect, useState } from 'react';

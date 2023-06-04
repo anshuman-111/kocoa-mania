@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import ProductCard from './productCard'
+import ProductCard from './ProductCard'
 import axios from 'axios'
 
 const ProductDisplay = ({category}) => {
