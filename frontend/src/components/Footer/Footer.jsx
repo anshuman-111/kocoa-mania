@@ -1,4 +1,5 @@
 import React from 'react'
+import PrivacyPolicy from './PrivacyPolicy'
 
 const Footer = () => {
   return (
@@ -21,9 +22,9 @@ const Footer = () => {
         </div>
         <div className="copyright">
           <p>
-            Copyright &copy; <span className="year"></span> All rights reserved. |
-            <a href="#" className="popup-show" title="Privacy policy"
-              >Privacy policy</a
+            Copyright &copy; <span className="year"></span> All rights reserved. | 
+            <span href="#" className="popup-show"
+              > Privacy policy</span
             >
           </p>
         </div>

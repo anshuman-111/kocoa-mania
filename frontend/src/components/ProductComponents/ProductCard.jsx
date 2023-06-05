@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 
 const ProductCard = ({item}) => {
-  
+  const location = useLocation();
   function encodeImageToDataURL(imageUrl, callback) {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
@@ -12,7 +13,7 @@ const ProductCard = ({item}) => {
       canvas.height = image.height;
       context.drawImage(image, 0, 0);
   
-      const dataURL = canvas.toDataURL('image/jpeg'); // Adjust the MIME type if needed
+      const dataURL = canvas.toDataURL('image/jpg'); // Adjust the MIME type if needed
       callback(dataURL);
     };
   
@@ -34,17 +35,23 @@ const ProductCard = ({item}) => {
     })
   }
  
+  const [cardSwiper, SetCardSwiper] = useState('swiper-slide card')
+  useEffect(()=>{
+    if(location.pathname.startsWith('/products')){
+      SetCardSwiper('card')
+    }
+  })
   var imgSrc = import.meta.env.VITE_STRAPI_UPLOAD_URL + item.attributes?.image?.data?.attributes?.url
   const whatsappMsgString = `https://wa.me/919748217878/?text=Hello!. Could you please provide me with information on the flavors, sizes, and prices available for ${item?.attributes?.title}`
   const whatsappImgString = `https://wa.me/919748217878/?text=`
 
   return (
-    <figure className="swiper-slide card">
+    <figure className={cardSwiper}>
                 <div className="card-image">
-                  
+                  {item?.attributes?.isNew ? <span className="new-label">New</span> : <></> }
                   <img
                     src={import.meta.env.VITE_STRAPI_UPLOAD_URL + item.attributes?.image?.data?.attributes?.url}
-                    alt={item?.attributes.title} 
+                    alt={item?.attributes?.title} 
                     loading="lazy"
                   />
                 </div>

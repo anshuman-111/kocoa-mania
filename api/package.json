@@ -13,10 +13,11 @@
     "@strapi/plugin-i18n": "4.10.5",
     "@strapi/plugin-users-permissions": "4.10.5",
     "@strapi/strapi": "4.10.5",
+    "cors": "^2.8.5",
     "mysql": "2.18.1"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Anshuman Gupta"
   },
   "strapi": {
     "uuid": "99942554-0f1c-485b-b22a-e20a2f34d330"

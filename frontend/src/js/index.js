@@ -1,5 +1,8 @@
 'use strict';
 
+const displayPopup = document.querySelector('.popup-show');
+const overlay = document.querySelector('.overlay');
+const closeBtn = document.querySelector('.popup-close');
 const toggler = document.querySelector('#toggler');
 const mobileNav = document.querySelector('.mobile-nav');
 const header = document.querySelector('.header');
@@ -11,6 +14,16 @@ const typeCursor = document.querySelector('.cursor');
 let currentTextIndex = -1;
 let currentYear = document.querySelector('.year');
 let d = new Date();
+
+// Popup
+const openModal = function () {
+  overlay.classList.toggle('popup-hidden');
+};
+const closeModal = function () {
+  overlay.classList.toggle('popup-hidden');
+};
+displayPopup.addEventListener('click', openModal);
+overlay.addEventListener('click', closeModal);
 
 // Image sliders
 const swiperHero = new Swiper('.showcase-hero--slider', {
@@ -67,11 +80,8 @@ const swiperTestimonials = new Swiper('.testimonials', {
 
 // Scrolled header
 const onScroll = event => {
-
   const scrollPosition = event.target.scrollingElement.scrollTop;
   header.classList.toggle('scrolled-down', scrollPosition > 80);
-
-  
 };
 document.addEventListener('scroll', onScroll, { passive: true });
 
@@ -134,46 +144,45 @@ const reveals = function () {
 window.addEventListener('scroll', reveals);
 
 // Typing effect
- const addLetter = letterIndex => {
-     if (letterIndex >= textArr[currentTextIndex].length) {
-       blinkTypeCursor();
-       return;
-     }
-     setTimeout(() => {
-       myText.textContent += textArr[currentTextIndex][letterIndex];
-       addLetter(letterIndex + 1);
-     }, txtUpdatingSpeed);
-   };
-  
-   const removeLetter = letterIndex => {
-     if (letterIndex < 0) {
-       updateText();
-       return;
-     }
-     setTimeout(() => {
-       myText.textContent = textArr[currentTextIndex].slice(0, letterIndex);
-       removeLetter(letterIndex - 1);
-     }, txtUpdatingSpeed);
-   };
-  
-   const blinkTypeCursor = () => {
-     typeCursor.classList.add('blinking');
-     setTimeout(() => {
-       typeCursor.classList.remove('blinking');
-       removeLetter(textArr[currentTextIndex].length);
-     }, blinkAnimDuration);
-   };
-  
-   const updateText = () => {
-     currentTextIndex++;
-     if (currentTextIndex === textArr.length) {
-       currentTextIndex = 0;
-     }
-     addLetter(0);
-   };
-  
-   setTimeout(() => updateText(), 1000);
+const addLetter = letterIndex => {
+  if (letterIndex >= textArr[currentTextIndex].length) {
+    blinkTypeCursor();
+    return;
+  }
+  setTimeout(() => {
+    myText.textContent += textArr[currentTextIndex][letterIndex];
+    addLetter(letterIndex + 1);
+  }, txtUpdatingSpeed);
+};
 
+const removeLetter = letterIndex => {
+  if (letterIndex < 0) {
+    updateText();
+    return;
+  }
+  setTimeout(() => {
+    myText.textContent = textArr[currentTextIndex].slice(0, letterIndex);
+    removeLetter(letterIndex - 1);
+  }, txtUpdatingSpeed);
+};
+
+const blinkTypeCursor = () => {
+  typeCursor.classList.add('blinking');
+  setTimeout(() => {
+    typeCursor.classList.remove('blinking');
+    removeLetter(textArr[currentTextIndex].length);
+  }, blinkAnimDuration);
+};
+
+const updateText = () => {
+  currentTextIndex++;
+  if (currentTextIndex === textArr.length) {
+    currentTextIndex = 0;
+  }
+  addLetter(0);
+};
+
+setTimeout(() => updateText(), 1000);
 
 // Mobile nav
 toggler.addEventListener('click', function () {
@@ -187,7 +196,3 @@ toggler.addEventListener('click', function () {
 // Copyright year
 currentYear.textContent = d.getFullYear();
 new Date().getFullYear();
-
-
-
-

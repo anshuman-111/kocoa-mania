@@ -7,7 +7,7 @@ const ProductDisplay = ({category}) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [urlFilter, setUrlFilter] = useState("");
-  
+
   useEffect(()=>{
     if(category !== ''){
       if (urlFilter === ""){
@@ -19,6 +19,14 @@ const ProductDisplay = ({category}) => {
       }
     }
   },[category])
+  // useEffect(()=>{
+  //   if(category !== ''){
+  //     setUrlFilter(`populate=*&[filters][categories][title][$eq]=${category}`)
+  //   }else{
+  //       setUrlFilter('populate=*')
+  //       console.log(urlFilter)
+  //     }
+  //   },[category])
 
 
 
@@ -38,7 +46,9 @@ const ProductDisplay = ({category}) => {
       }
       setLoading(false);
     };
-    fetchData();
+      console.log(urlFilter)
+      fetchData();
+
   }, [urlFilter]);
 
     

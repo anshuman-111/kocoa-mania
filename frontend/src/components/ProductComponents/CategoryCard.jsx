@@ -28,7 +28,7 @@ const CategoryCard = ({item}) => {
             </div>
         
            
-            <p title="Birthday">{item?.attributes?.title}</p>
+            <a title="Birthday">{item?.attributes?.title}</a>
             
           </div>
           

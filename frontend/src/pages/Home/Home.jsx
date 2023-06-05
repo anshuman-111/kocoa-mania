@@ -1,12 +1,17 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import Hero from '../../components/HomeComponents/Hero'
 import Categories from '../../components/HomeComponents/Categories'
 import Contact from '../../components/HomeComponents/Contact'
 import About from '../../components/HomeComponents/About'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
+import PrivacyPolicy from '../../components/Footer/PrivacyPolicy'
+
+
 
 const Home = ({data}) => {
+  
+
   const heroData = { 
     wbte: data?.attributes?.wbte,
     wate: data?.attributes?.wate,
@@ -35,6 +40,7 @@ const Home = ({data}) => {
         <About AboutData={aboutData} />
         <Contact ContactData={contactData}/>
         <Footer />
+        <PrivacyPolicy />
     </>
   )
 }

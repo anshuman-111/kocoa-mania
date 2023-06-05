@@ -32,7 +32,7 @@ const Products = () => {
     const handleCategoryClick = (title) => {
       setTimeout(()=>{
         setSelection(title)
-      },600)
+      },1000)
       
       setSearchList([])
 
@@ -101,10 +101,16 @@ const Products = () => {
         <div className="row-top">
           
           {/* Center the logo  */}
-          <Link to={'/'} className="logo"  title="Kocoa Mania">
+          <Link to={'/'} className="logo"  title="Kocoa Mania" onClick={
+            ()=>{
+              document.dispatchEvent('popstate')
+            }
+          }>
             <img src={Logo} alt="kocoamania" loading="lazy" />
           </Link>
-          <Link to={'/'} title="Back to Home">
+          <Link to={'/'} title="Back to Home" onClick={()=>{
+            document.dispatchEvent('popstate')
+          }}>
             <i className="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to
             Home
             </Link>
@@ -136,19 +142,33 @@ const Products = () => {
 
       {/* <!-- Product gallery --> */}
       <main className="product-gallery">
+
+
         {/* <!-- Searchbar --> */}
         <section className="searchbar">
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Search the cakes"
-            onChange={e => 
-              setSearchInput(e.target.value)}
-          />
-          <input type="submit" value='Search' onClick={handleSearchSubmit}
-           />
-        </section>
+          {/* <!-- searchbox --> */}
+          <div className="searchbox">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search the cakes"
+              onChange={e => 
+                setSearchInput(e.target.value)}
+            />
+
+            {/* <!-- Searchbox result --> */}
+            {searchInput==='' ? <></> : 
+              <div className="searchbox-result">
+              <ul role="list">
+                <li><a href="#" title="">Taj Mahal Cake</a></li>
+              </ul>
+            </div>
+            }
+            </div>
+            
+          <input type="submit" value="Search" onClick={handleSearchSubmit}/>
+    </section>
         
         {/* <!-- Tab content --> */}
         {searchList.length < 1 ?  
