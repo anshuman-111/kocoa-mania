@@ -12,8 +12,17 @@ const Hero = ({HeroData}) => {
   const [showcaseData, setShowcaseData] = useState([]);
   const [scLoading, setScLoading] = useState(false);
   const [scError, setScError] = useState(false);
+
+  // FIX PHONE NUMBER
   const [phone, setPhone] = useState('')
-  
+  useEffect(()=>{
+    if(typeof(HeroData.contact)==='undefined'){
+      setPhone('919163826382')
+    }else{
+      setPhone(HeroData.contact.slice(1,))
+    }
+   
+  },[])
   // API CALL FOR SHOWCASE IMAGES
   useEffect(() => {
     const fetchData = async () => {
@@ -40,8 +49,6 @@ const Hero = ({HeroData}) => {
     `/products?populate=*&[filters][isNew][$eq]=true`
   );
 
-  
-    const whatsappMsgString = `https://wa.me/${phone}/?text=Hello!. Could you please provide me with information on the options, flavors, sizes, and prices available.`
  
   return (
     // <!-- Home -->
@@ -58,7 +65,7 @@ const Hero = ({HeroData}) => {
               {HeroData.wate}
             </h1>
             <a
-              href={whatsappMsgString}
+              href={`https://wa.me/${phone}/?text=Hello!. Could you please provide me with information on the options, flavors, sizes, and prices available.`}
               className="btn btn-primary btn-red"
               title="Order Now"
             >
