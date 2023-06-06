@@ -8,7 +8,6 @@ const loadScript = (src) => {
     script.setAttribute("crossorigin","anonymous")
     script.src = src;
     script.async = true
-    script.onload = () => { console.log("JS FILE LOADED : " + src) }
     document.body.append(script);
     return ()=>{
       document.body.removeChild(script)

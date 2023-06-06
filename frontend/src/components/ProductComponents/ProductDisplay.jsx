@@ -1,33 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import ProductCard from './ProductCard'
 import axios from 'axios'
+import Loader from '../HomeComponents/Loader';
 
-const ProductDisplay = ({category}) => {
+const ProductDisplay = (props) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [urlFilter, setUrlFilter] = useState("");
 
-  useEffect(()=>{
-    if(category !== ''){
-      if (urlFilter === ""){
-        setTimeout(()=>{
+   useEffect(()=>{
+    setTimeout(()=>{
+      if(props.category === undefined){
           setUrlFilter('populate=*')
-        }, 500)
-      } else {
-        setUrlFilter(`populate=*&[filters][categories][title][$eq]=${category}`)
+      }else{
+       setUrlFilter(`populate=*&[filters][categories][title][$eq]=${props.category}`)
       }
-    }
-  },[category])
-  // useEffect(()=>{
-  //   if(category !== ''){
-  //     setUrlFilter(`populate=*&[filters][categories][title][$eq]=${category}`)
-  //   }else{
-  //       setUrlFilter('populate=*')
-  //       console.log(urlFilter)
-  //     }
-  //   },[category])
 
+    },100)
+     
+   },[props.category])
+ 
 
 
   useEffect(() => {
@@ -46,25 +39,24 @@ const ProductDisplay = ({category}) => {
       }
       setLoading(false);
     };
-      console.log(urlFilter)
+      
       fetchData();
 
   }, [urlFilter]);
 
     
   return (
-    <section className="tab-content">
-          <div className="tab-item active" data-tab="tab-1">
+      <section className="tab-content">
+          <div className="tab-item active">
             <div className="products">
             {error
           ? "Something went wrong!"
           : loading
-          ? "loading"
-          : data?.map((item) => <ProductCard item={item} key={item.id} />)}
+          ? " LOADING ..."
+          : data?.map((item) => <ProductCard item={item} phone={props.phone} key={item.id} />)}
             </div>
           </div>
     </section>
-
   )
 }
 

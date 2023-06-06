@@ -1,4 +1,4 @@
-'use strict';
+
 
 const displayPopup = document.querySelector('.popup-show');
 const overlay = document.querySelector('.overlay');

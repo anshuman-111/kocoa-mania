@@ -2,15 +2,15 @@ import React from 'react'
 
 const PrivacyPolicy = () => {
   return (
-    <div class="overlay popup-hidden">
-      <div class="popup">
-        <span class="popup-close">&times;</span>
-        <h4 class="heading heading-tertiary text-red">
+    <div className="overlay popup-hidden">
+      <div className="popup">
+        <span className="popup-close">&times;</span>
+        <h4 className="heading heading-tertiary text-red">
           Privacy Policy for Kocoa Mania
         </h4>
 
         {/* <!-- Popup text --> */}
-        <article class="popup-text">
+        <article className="popup-text">
           <p>
             Effective date: [Insert Date] <br />
             At Kocoa Mania, we respect your privacy and are committed to

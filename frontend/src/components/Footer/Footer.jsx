@@ -1,15 +1,17 @@
 import React from 'react'
-import PrivacyPolicy from './PrivacyPolicy'
-
+import fssaiLogo from '../../assets/img/fssai_logo.png'
+import fssaiCert from '../../assets/img/fssai_cert.pdf'
+import logo from '../../assets/img/logo.png'
+import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <footer className="footer pt-3 pb-3">
     <div className="container">
       {/* <!-- Footer logo --> */}
       <div className="footer-logo">
-        <a href="index.html" className="logo" title="Kocoa Mania">
-          <img src="dist/img/logo.png" alt="kocoamania" loading="lazy" />
-        </a>
+        <Link to={'/'} className="logo" title="Kocoa Mania">
+          <img src={logo} alt="kocoamania" loading="lazy" />
+        </Link>
       </div>
       <div className="text-center">
         <div className="footer-nav pb-2">
@@ -32,11 +34,11 @@ const Footer = () => {
       {/* <!-- FSSAI logo --> */}
       <div className="footer-fssai-logo">
         <a
-          href="certificate/REG-CERTIFICATE.pdf"
+          href={fssaiCert}
           title="Kocoa Mania FSSAI Certificate"
           target="_blank"
         >
-          <img src="dist/img/logo-fssai.png" alt="FSSAI Certificate" />
+          <img src={fssaiLogo} alt="FSSAI Certificate" />
         </a>
       </div>
     </div>

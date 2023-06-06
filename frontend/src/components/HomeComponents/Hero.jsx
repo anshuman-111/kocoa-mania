@@ -12,6 +12,7 @@ const Hero = ({HeroData}) => {
   const [showcaseData, setShowcaseData] = useState([]);
   const [scLoading, setScLoading] = useState(false);
   const [scError, setScError] = useState(false);
+  const [phone, setPhone] = useState('')
   
   // API CALL FOR SHOWCASE IMAGES
   useEffect(() => {
@@ -40,7 +41,7 @@ const Hero = ({HeroData}) => {
   );
 
   
-
+    const whatsappMsgString = `https://wa.me/${phone}/?text=Hello!. Could you please provide me with information on the options, flavors, sizes, and prices available.`
  
   return (
     // <!-- Home -->
@@ -57,7 +58,7 @@ const Hero = ({HeroData}) => {
               {HeroData.wate}
             </h1>
             <a
-              href="https://wa.me/919748217878/?text=Hello! I'm inquiring about your cakes. Could you please provide me with information on the flavors, sizes, and prices available?"
+              href={whatsappMsgString}
               className="btn btn-primary btn-red"
               title="Order Now"
             >
@@ -104,7 +105,7 @@ const Hero = ({HeroData}) => {
           ? "Something went wrong!"
           : loading
           ? "loading"
-          : data?.map((item) => <ProductCard item={item} key={item.id} />)}
+          : data?.map((item) => <ProductCard item={item} phone={phone} key={item.id} />)}
               
 
             </div>

@@ -21,7 +21,7 @@ const Contact = ({ContactData}) => {
             <div className="contact-info text-center">
               <div>
                 <h4 className="heading heading-tertiary text-red">Phone</h4>
-                <a href="tel:+919876543210" title="Telephone">{ContactData.phone}</a>
+                <a href="tel:+919876543210" title="Telephone">+{ContactData.phone}</a>
               </div>
 
               <div>

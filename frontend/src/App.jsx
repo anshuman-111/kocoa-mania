@@ -10,6 +10,7 @@ import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
 import useFetch from './components/Hooks/useFetch';
 import loadScript from './components/Hooks/loadScript';
+import ProductImage from './components/ProductComponents/ProductImage';
 
 
 function App() {
@@ -30,25 +31,25 @@ function App() {
     console.log('Route changed:', location.pathname);
  
     if(location.pathname==='/'){
-      loadScript('/src/js/index.js');
+      loadScript('/src/assets/js/index.js');
     }
 
     if(location.pathname.startsWith('/products')){
-      loadScript('/src/js/product.js');
+      loadScript('/src/assets/js/product.js');
     }
     
     
     window.scrollTo(0, 0);
   }, [location]);
   const {data, loading, error} = useFetch("/home?populate=*")
-  
+  const phone = data?.attributes?.phone.toString().slice(1,)
   return (
     <div className='App'>
       <div>
       <HelmetProvider>
         <Helmet>
         <script>
-          let textArr = ["abcd", "defg", "rewwerw"]
+          var textArr = ["abcd", "defg", "rewwerw"]
         </script>
         </Helmet>
       </HelmetProvider>
@@ -56,8 +57,9 @@ function App() {
       <Routes>
         <Route key={location.key} path='/' element={<Home data={data} />} />
         <Route key={location.key} path='/:params' element={<Home data={data} />} />
-        <Route key={location.key} path='/products' element={<Products />} />
-        <Route key={location.key} path='/products/:category' element={<Products />}/>
+        <Route key={location.key} path='/products' element={<Products phone={phone}/>} />
+        <Route key={location.key} path='/products/:category' element={<Products phone={phone}/>}/>
+        <Route key={location.key} path='/products/view/:productName' element={<ProductImage />} />
       </Routes>
       </div>
     </div>
