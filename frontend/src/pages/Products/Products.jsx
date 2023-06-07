@@ -49,7 +49,7 @@ const Products = ({phone}) => {
   const {data, loading, error} = useFetch('/categories?populate[0]=title&populate[products][populate]=*')
   useEffect(()=>{
       if(!loading && categorySelection!==undefined){
-        console.log(data)
+    
         data?.forEach((cat)=>{
           if(cat?.attributes?.title === categorySelection){
             setCategoryWiseList(cat?.attributes?.products?.data)
@@ -59,7 +59,7 @@ const Products = ({phone}) => {
       }
       
     },[categorySelection, data])
-    console.log(categoryWiseList)
+    
 
 
  

@@ -49,6 +49,12 @@
         "videos",
         "audios"
       ]
+    },
+    "facebook": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
     }
   }
 }

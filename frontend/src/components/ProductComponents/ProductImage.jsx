@@ -35,21 +35,14 @@ const ProductImage = () => {
         setQuery(true)
       },[data])
 
-      console.log(import.meta.env.VITE_STRAPI_UPLOAD_URL +  data?.attributes?.image?.data?.attributes?.url)
-
-      console.log(import.meta.env.VITE_REACT_APP_API_URL +  `/products?populate=*&[filters][title][$eq]=${productName}`)
-      console.log(data)
   return (
     <div>
         {query ?  
-        <>
-            <h1>{heading}</h1>
             <img
             src={image}
             alt={heading} 
             loading="lazy"
                     />
-        </>
              : <h1> LOADING ...</h1>
         }
       

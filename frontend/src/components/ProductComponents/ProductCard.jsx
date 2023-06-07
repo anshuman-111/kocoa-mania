@@ -38,10 +38,10 @@ const ProductCard = (props) => {
                     <p>{props.item?.attributes?.isNew}</p>
                   </div>
                   <div className="card-details--button">
-                    <a title="What'sApp" href={whatsappMsgString}>
+                    <a title="What'sApp" href={whatsappMsgString} target='_blank'>
                       <i className="fa fa-whatsapp" aria-hidden="true"></i>
                     </a>
-                    <a href={whatsappShareString} data-action='share/whatsapp/share' title="Share">
+                    <a href={whatsappShareString} data-action='share/whatsapp/share' title="Share"  target='_blank'>
                       <i className="fa fa-share-alt" aria-hidden="true"></i>
                     </a>
                   </div>
@@ -49,5 +49,5 @@ const ProductCard = (props) => {
               </figure>
   )
 }
-
+// Share button has to be platform agnostic
 export default ProductCard

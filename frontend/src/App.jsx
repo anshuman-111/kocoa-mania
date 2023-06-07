@@ -32,7 +32,9 @@ function App() {
     }
 
     if(location.pathname.startsWith('/products')){
-      loadScript('/src/assets/js/product.js');
+      if(location.pathname !== '/products/view'){
+        loadScript('/src/assets/js/product.js');
+      }
     }
     
     

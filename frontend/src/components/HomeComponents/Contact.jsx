@@ -9,6 +9,7 @@ const Contact = ({ContactData}) => {
           <div className="top-row">
             {/* <!-- Course info --> */}
             <article className="contact-course-info text-center">
+            <h4 className="heading heading-tertiary text-red">Class Schedule:</h4>
               <p className="pb-4">
                 {ContactData.classInfoTitle}
               </p>
@@ -37,14 +38,14 @@ const Contact = ({ContactData}) => {
               </address>
               {/* <!-- Social icons --> */}
               <div className="contact-info--social-icons">
-                <a href="#" title="Facebook" className="btn btn-secondary">
+                <a href={ContactData.facebook} title="Facebook" className="btn btn-secondary">
                   <i className="fa fa-facebook" aria-hidden="true"></i>
                 </a>
-                <a href="#" title="Instagram" className="btn btn-secondary">
+                <a href={ContactData.instagram} title="Instagram" className="btn btn-secondary">
                   <i className="fa fa-instagram" aria-hidden="true"></i>
                 </a>
                 <a
-                  href="https://wa.me/919876543210"
+                  href={`https://wa.me/${ContactData.phone}`}
                   title="What'sApp"
                   className="btn btn-secondary"
                 >

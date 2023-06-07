@@ -68,6 +68,7 @@ const Hero = ({HeroData}) => {
               href={`https://wa.me/${phone}/?text=Hello!. Could you please provide me with information on the options, flavors, sizes, and prices available.`}
               className="btn btn-primary btn-red"
               title="Order Now"
+              target='_blank'
             >
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
               Enquire Now

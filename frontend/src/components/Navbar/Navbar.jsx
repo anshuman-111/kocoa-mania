@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from '../../assets/img/logo.png';
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <header className="header">
@@ -11,9 +12,9 @@ const Navbar = () => {
     </div>
       <div className="container">
         {/* Logo */}
-        <a href="index.html" className="logo" title="Kocoa Mania">
+        <Link to={'/'} className="logo" title="Kocoa Mania">
           <img src={Logo} alt="kocoamania" loading="lazy" />
-        </a>
+        </Link>
 
         {/* Main navigation */}
         <nav className="main-nav nav">

@@ -38,7 +38,10 @@ const Home = ({data}) => {
     classInfoTitle: data?.attributes?.classInfoTitle,
     classHours: data?.attributes?.classhours,
     classFees: data?.attributes?.classFees,
-    openingHours: data?.attributes?.openingHours
+    openingHours: data?.attributes?.openingHours,
+    facebook: data?.attributes?.facebook,
+    instagram: data?.attributes?.instagram,
+
   }
  
   return (
