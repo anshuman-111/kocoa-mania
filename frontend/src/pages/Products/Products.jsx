@@ -10,58 +10,59 @@ import Loader from '../../components/HomeComponents/Loader'
 import CategoryTab from '../../components/ProductComponents/CategoryTab'
 const Products = ({phone}) => {
 
-  useEffect(()=>{
-    const handlePopState = () => {
-      window.location.reload()
-    }
-    window.addEventListener('popstate', handlePopState)
-
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    }
-  },[])
   // Setting states for Search
   const [searchInput, setSearchInput] = useState('')
   const [searchBox, setSearchBox] = useState(false)
   const [onResultClick, setResultclick] = useState(false) 
-  const [active, setActive] = useState('')
   const [fetchedList, setFetchedList] = useState([])
   const [searchList, setSearchList] = useState([])
+  const [categoryWiseList, setCategoryWiseList] = useState([])
+
+
   // Category Selection states from URL or From Side Nav
   const [categorySelection, setSelection] = useState()
   const categoryTitle = useParams().category
 
-
-  // Set Loader 
-  useEffect(()=>{
-    setTimeout(()=>{
-      setPageLoading(false)
-    }, 1000)
-  })
+  let searchBoxList = new Set()
+  let suggestions = new Set()
+  
 
 
-   // Setting category state from params
+   // Setting category state from URL params
   useEffect(()=>{
     if(categoryTitle!=='undefined'){
-      setSelection(categoryTitle)
-      setActive(categoryTitle)
+     setSelection(categoryTitle)
     }
   },[categoryTitle])
 
     // Adding category click function
+    
     const handleCategoryClick = (title) => {
-      setSelection(title)
-      setSearchList([])
-      setSearchInput('')
-      setActive(title)
-      document.getElementById('search').value = ''
+        setSelection(title)
+        setSearchList([])
+        setSearchInput('')
+        document.getElementById('search').value = ''
+      }
 
-    }
-
-
+     
   // API Call for getting categories for side nav
-  const {data, loading, error} = useFetch('/categories?populate[0]=title')
+  const {data, loading, error} = useFetch('/categories?populate[0]=title&populate[products][populate]=*')
+  useEffect(()=>{
+      if(!loading && categorySelection!==undefined){
+        console.log(data)
+        data?.forEach((cat)=>{
+          if(cat?.attributes?.title === categorySelection){
+            setCategoryWiseList(cat?.attributes?.products?.data)
+            
+          }
+        })
+      }
+      
+    },[categorySelection, data])
+    console.log(categoryWiseList)
 
+
+ 
   // Getting all products for search
   useEffect(() => {
     const fetchData = async () => {
@@ -89,8 +90,7 @@ const Products = ({phone}) => {
     }
   },[searchInput])
   
-  let searchBoxList = new Set()
-  let suggestions = new Set()
+  
     if (searchInput !== ''){
 
       fetchedList.forEach(item => {
@@ -166,8 +166,9 @@ const Products = ({phone}) => {
           : data?.map((item) =>
           <li key={item?.id} onClick={()=>{
             handleCategoryClick(item?.attributes?.title)
+            
           }}>
-            <CategoryTab item={item} active={active} />
+            <CategoryTab item={item} active={categorySelection} />
           </li>
           )}
             
@@ -218,7 +219,7 @@ const Products = ({phone}) => {
         
         {/* <!-- Tab content --> */}
         {searchList.length < 1 ?  
-        <ProductDisplay category={categorySelection} phone={phone} /> :
+        <ProductDisplay productList={categoryWiseList.length < 1 ? fetchedList : categoryWiseList} phone={phone}/> :
         <SearchResults searchList={searchList}/>
         }
           

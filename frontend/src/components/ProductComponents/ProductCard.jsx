@@ -12,7 +12,7 @@ const ProductCard = (props) => {
     }
   })
  
-  const whatsappMsgString = `https://wa.me/${props?.phone}/?text=Hello!. Could you please provide me with information on the options, flavors, sizes, and prices available for ${props.item?.attributes?.title}. LINK: ${import.meta.env.VITE_REACT_URL}/products/view/${props.item?.attributes?.title}`
+  const whatsappMsgString = `https://wa.me/${props.phone}/?text=Hello!. Could you please provide me with information on the options, flavors, sizes, and prices available for ${props.item?.attributes?.title}. LINK: ${import.meta.env.VITE_REACT_URL}/products/view/${props.item?.attributes?.title}`
 
 
   const whatsappShareString = `whatsapp://send?text=Check out ${props.item?.attributes?.title} at Kocoa Mania  LINK: ${import.meta.env.VITE_REACT_URL}/products/view/${props.item?.attributes?.title}`

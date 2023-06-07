@@ -27,9 +27,6 @@ function App() {
   },[])
   
   useEffect(() => {
-   
-    console.log('Route changed:', location.pathname);
- 
     if(location.pathname==='/'){
       loadScript('/src/assets/js/index.js');
     }

@@ -1,48 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import ProductCard from './ProductCard'
 import axios from 'axios'
-import Loader from '../HomeComponents/Loader';
+
 
 const ProductDisplay = (props) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [urlFilter, setUrlFilter] = useState("");
+  const [category, setCategory] = useState()
 
-   useEffect(()=>{
-    setTimeout(()=>{
-      if(props.category === undefined){
-          setUrlFilter('populate=*')
-      }else{
-       setUrlFilter(`populate=*&[filters][categories][title][$eq]=${props.category}`)
-      }
-
-    },100)
-     
-   },[props.category])
+  useEffect(()=>{
+    setData(props.productList)
+  }, [props.productList])
  
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const res = await axios.get(import.meta.env.VITE_REACT_APP_API_URL +  `/products?${urlFilter}`, {
-          headers : {
-            Authorization: "bearer " + import.meta.env.VITE_REACT_APP_API_TOKEN
-          }
-        });
-        setData(res.data.data);
-      } catch (err) {
-  
-        setError(true);
-      }
-      setLoading(false);
-    };
-      
-      fetchData();
-
-  }, [urlFilter]);
 
     
   return (
@@ -53,7 +24,7 @@ const ProductDisplay = (props) => {
           ? "Something went wrong!"
           : loading
           ? " LOADING ..."
-          : data?.map((item) => <ProductCard item={item} phone={props.phone} key={item.id} />)}
+          : data.map((item) => <ProductCard item={item} phone={props.phone} key={item.id} />)}
             </div>
           </div>
     </section>

@@ -26,9 +26,9 @@ tabLinks.forEach(link => {
     tabItems.forEach(item => {
       item.classList.remove('active');
     });
-    // document
-    //   .querySelector(`.tab-item[data-tab="${tab}"]`)
-    //   .classList.add('active');
+    //  document
+    //    .querySelector(`.tab-item[data-tab="${tab}"]`)
+    //    .classList.add('active');
 
     if (sideNav.classList.contains('nav-hidden')) {
       toggleSideNav();
