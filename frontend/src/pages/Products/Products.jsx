@@ -123,6 +123,7 @@ const Products = ({phone}) => {
     setSearchList([...suggestions])
     setSearchInput('')
     setResultclick(false)
+    setSelection('')
   }
   searchBoxList = new Array([... searchBoxList])
   searchBoxList[0] = searchBoxList[0].slice(0,8)
