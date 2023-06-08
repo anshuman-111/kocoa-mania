@@ -1,10 +1,8 @@
 import React from 'react'
-
+import shareAction from '../Hooks/shareAction';
 import useFetch from '../Hooks/useFetch'
-const About = ({AboutData}) => {
 
-  // Class Fees - 3 types 
-  // Heading needs to editable -> add model
+const About = ({AboutData}) => {
 
   // Business Number - 919163826382
   // Add image sharing option for Whatsapp Link

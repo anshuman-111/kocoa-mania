@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
 const Hero = ({HeroData}) => {
 
   const [showcaseData, setShowcaseData] = useState([]);
@@ -54,7 +55,7 @@ const Hero = ({HeroData}) => {
     // <!-- Home -->
     <section className="section home" id="home">
       {/* <!-- Showcase --> */}
-
+    
       <div className="showcase">
         <div className="container">
           {/* <!-- showcase title --> */}

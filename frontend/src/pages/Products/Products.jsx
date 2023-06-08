@@ -46,7 +46,7 @@ const Products = ({phone}) => {
 
      
   // API Call for getting categories for side nav
-  const {data, loading, error} = useFetch('/categories?populate[0]=title&populate[products][populate]=*')
+  const {data, loading, error} = useFetch('/categories?populate[0]=title&populate[products][populate]=*&sort=id')
   useEffect(()=>{
       if(!loading && categorySelection!==undefined){
     

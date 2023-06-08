@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CategoryCard from '../ProductComponents/CategoryCard'
 import useFetch from '../../components/Hooks/useFetch'
 import { Link } from 'react-router-dom'
 
 const Categories = () => {
-
-  const {data, loading, error } = useFetch('/categories?populate[0]=image&populate[1]=title')
+  
+  const {data, loading, error } = useFetch('/categories?populate[0]=image&populate[1]=title&pagination[start]=0&pagination[limit]=12')
 
   return (
     // <!-- Categories -->

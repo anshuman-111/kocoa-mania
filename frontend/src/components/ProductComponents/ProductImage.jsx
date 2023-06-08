@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
+import logo from '../../assets/img/logo.png'
+import Loader from '../HomeComponents/Loader'
 const ProductImage = () => {
     const productName = useParams().productName
     const [query, setQuery] = useState(false)
@@ -36,17 +38,46 @@ const ProductImage = () => {
       },[data])
 
   return (
-    <div>
-        {query ?  
-            <img
-            src={image}
-            alt={heading} 
-            loading="lazy"
-                    />
-             : <h1> LOADING ...</h1>
-        }
+    // <!-- Product details -->
+    <>
+    {!query ?  <Loader />  : 
+      <div class="product-details pb-3">
+      {/* <!-- Header --> */}
+      <header class="product-details-header pt-1 pb-1">
+        <div class="container">
+          {/* <!-- Logo --> */}
+          <Link to={'/'} class="logo" title="Kocoa Mania">
+            <img src={logo} alt="kocoamania" loading="lazy" />
+          </Link>
+        </div>
+      </header>
+
+      {/* <!-- Product details content --> */}
+      <div class="container">
+        <figure>
+          <img src={image} alt={heading} />
+          <figcaption>
+            <h2 class="pt-2 pb-2">{heading}</h2>
+            <a
+              class="btn btn-primary btn-white"
+              title="Copy link"
+            >
+              <i class="fas fa-copy"></i>
+              Copy link
+            </a>
+          </figcaption>
+        </figure>
+      </div>
+</div>
+    
+    
+    
+    }
       
-    </div>
+    
+    
+    </>
+    
   )
 }
 

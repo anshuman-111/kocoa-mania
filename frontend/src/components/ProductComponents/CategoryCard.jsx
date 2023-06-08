@@ -7,7 +7,7 @@ const CategoryCard = ({item}) => {
       'card card-red reveal fade-left',
       'card card-light-red reveal fade-left',
       'card card-light-brown reveal fade-left',
-      'card card-light-grey reveal fade-left',    
+      'card card-light-grey reveal fade-left',   
        ]
   return (
       
