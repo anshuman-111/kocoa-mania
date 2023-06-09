@@ -9,6 +9,10 @@ const ProductImage = () => {
     const [image, setImage] = useState('')
     const [heading, setHeading] = useState('')
     const [data, setData] = useState([])
+  const url = window.location.href
+  const clipBoardText = `Check out the ${heading} by Kocoa Mania at ${url}`
+  console.log(url)
+  
     useEffect(() => {
         const fetchData = async () => {
             if(productName.length > 0){
@@ -61,14 +65,16 @@ const ProductImage = () => {
             <a
               class="btn btn-primary btn-white"
               title="Copy link"
+              onClick={()=>navigator.clipboard.writeText(clipBoardText)}
             >
               <i class="fas fa-copy"></i>
               Copy link
-            </a>
+            </a> 
           </figcaption>
         </figure>
       </div>
 </div>
+
     
     
     

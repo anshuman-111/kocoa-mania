@@ -1,8 +1,6 @@
 import React from 'react'
-import useFetch from '../Hooks/useFetch'
 const Contact = ({ContactData}) => {
-  // Add models for all class types
-  // Add Copy Link button in ProductImage.jsx
+  // Try to remove react helmet from the App and add it to index.html...make it faster
   return (
 
     <section className="section contact pt-7 pb-7" id="contact">
@@ -14,20 +12,17 @@ const Contact = ({ContactData}) => {
           <h3 className="heading heading-tertiary text-red pb-2">
             Baking is fun with Kocoa Mania
           </h3>
-          <h4 className="heading heading-tertiary text-red">Class Type A:</h4>
+          <h4 className="heading heading-tertiary text-red">{ContactData.classTypeAHeading}:</h4>
           <p className="pb-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Dolorem, voluptate esse repellendus nihil incidunt atque!
+            {ContactData.classTypeADescription}
           </p>
-          <h4 className="heading heading-tertiary text-red">Class Type B:</h4>
+          <h4 className="heading heading-tertiary text-red">{ContactData.classTypeBHeading}:</h4>
           <p className="pb-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-            quas sequi ut numquam, suscipit laboriosam?
+          {ContactData.classTypeBDescription}
           </p>
-          <h4 className="heading heading-tertiary text-red">Class Type C:</h4>
+          <h4 className="heading heading-tertiary text-red"> {ContactData.classTypeCHeading}:</h4>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-            quas sequi ut numquam, suscipit laboriosam?
+          {ContactData.classTypeCDescription}
           </p>
         </article>
         {/* <!-- Contact info --> */}

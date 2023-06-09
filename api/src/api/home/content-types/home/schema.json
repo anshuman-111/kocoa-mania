@@ -27,15 +27,6 @@
     "address": {
       "type": "string"
     },
-    "classInfoTitle": {
-      "type": "string"
-    },
-    "classhours": {
-      "type": "string"
-    },
-    "openingHours": {
-      "type": "string"
-    },
     "aboutDescription": {
       "type": "text"
     },
@@ -55,6 +46,24 @@
     },
     "instagram": {
       "type": "string"
+    },
+    "classTypeAHeading": {
+      "type": "string"
+    },
+    "classTypeBHeading": {
+      "type": "string"
+    },
+    "classTypeCHeading": {
+      "type": "string"
+    },
+    "classTypeADescription": {
+      "type": "text"
+    },
+    "classTypeBDescription": {
+      "type": "text"
+    },
+    "classTypeCDescription": {
+      "type": "text"
     }
   }
 }

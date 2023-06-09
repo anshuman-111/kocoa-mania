@@ -1,6 +1,5 @@
 import './css/style.css';
 import { useEffect } from 'react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 import {
   Route,
   Routes,
@@ -45,14 +44,6 @@ function App() {
   return (
     <div className='App'>
       <div>
-      <HelmetProvider>
-        <Helmet>
-        <script>
-          var textArr = ["abcd", "defg", "rewwerw"]
-        </script>
-        </Helmet>
-      </HelmetProvider>
-   
       <Routes>
         <Route key={location.key} path='/' element={<Home data={data} />} />
         <Route key={location.key} path='/:params' element={<Home data={data} />} />
