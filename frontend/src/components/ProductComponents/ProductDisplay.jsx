@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import ProductCard from './ProductCard'
-import axios from 'axios'
 
 
 const ProductDisplay = (props) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [urlFilter, setUrlFilter] = useState("");
-  const [category, setCategory] = useState()
+
 
   useEffect(()=>{
     setData(props.productList)

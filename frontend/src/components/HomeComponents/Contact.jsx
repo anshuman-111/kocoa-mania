@@ -1,4 +1,4 @@
-import React from 'react'
+
 const Contact = ({ContactData}) => {
   // Try to remove react helmet from the App and add it to index.html...make it faster
   return (

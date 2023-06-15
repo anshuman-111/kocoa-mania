@@ -12,7 +12,7 @@ function shareAction(title, url) {
             }).catch((error) => console.log(error))
     }
     }catch(err){
-
+            
     }
 
 }

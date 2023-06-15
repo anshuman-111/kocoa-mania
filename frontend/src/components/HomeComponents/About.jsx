@@ -1,5 +1,4 @@
-import React from 'react'
-import shareAction from '../Hooks/shareAction';
+
 import useFetch from '../Hooks/useFetch'
 
 const About = ({AboutData}) => {

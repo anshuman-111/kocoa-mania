@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 //import shareAction from '../Hooks/shareAction'
 
 const ProductCard = (props) => {

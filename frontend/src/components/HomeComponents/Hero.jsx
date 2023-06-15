@@ -1,4 +1,4 @@
-import React from 'react';
+
 import '../../css/style.css';
 import ProductCard from '../ProductComponents/ProductCard';
 import ShowcaseCard from './ShowcaseCard';
