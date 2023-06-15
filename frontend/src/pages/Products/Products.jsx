@@ -17,6 +17,8 @@ const Products = ({phone}) => {
   const [fetchedList, setFetchedList] = useState([])
   const [searchList, setSearchList] = useState([])
   const [categoryWiseList, setCategoryWiseList] = useState([])
+  const [showNav, setShowNav] = useState('')
+  const [rotate, setRotate] = useState('')
 
 
   // Category Selection states from URL or From Side Nav
@@ -41,6 +43,8 @@ const Products = ({phone}) => {
         setSelection(title)
         setSearchList([])
         setSearchInput('')
+        setShowNav('')
+        setRotate('')
         document.getElementById('search').value = ''
       }
 
@@ -137,9 +141,17 @@ const Products = ({phone}) => {
     
       <div className="wrapper">
       {/* <!-- Side navigation --> */}
-      <aside className="side-nav">
-        <div className="nav-open">
-          <i className="fa fa-arrow-right" aria-hidden="true"></i>
+      <aside className={`side-nav ${showNav}`}>
+        <div className="nav-open" onClick={()=>{
+          if(showNav===''){
+            setShowNav('nav-hidden')
+            setRotate('rotate')
+          }else{
+            setShowNav('')
+            setRotate('')
+          }
+          }}>
+          <i className={`fa fa-arrow-right ${rotate}`} aria-hidden="true"></i>
         </div>
         <div className="row-top">
           

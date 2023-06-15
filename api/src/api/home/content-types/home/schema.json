@@ -24,9 +24,6 @@
     "email": {
       "type": "email"
     },
-    "address": {
-      "type": "string"
-    },
     "aboutDescription": {
       "type": "text"
     },

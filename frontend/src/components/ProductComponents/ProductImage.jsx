@@ -9,6 +9,7 @@ const ProductImage = () => {
     const [image, setImage] = useState('')
     const [heading, setHeading] = useState('')
     const [data, setData] = useState([])
+    const [msg, setMsg] = useState('Click to copy link')
   const url = window.location.href
   const clipBoardText = `Check out the ${heading} by Kocoa Mania at ${url}`
   console.log(url)
@@ -65,13 +66,14 @@ const ProductImage = () => {
             <a
               class="btn btn-primary btn-white"
               title="Copy link"
-              onClick={()=>navigator.clipboard.writeText(clipBoardText)}
+              onClick={()=> {navigator.clipboard.writeText(clipBoardText); setMsg('Link Copied to Clipboard') }}
             >
               <i class="fas fa-copy"></i>
               Copy link
             </a> 
           </figcaption>
         </figure>
+        <p className='pt-2 pb-2'>{msg}</p>
       </div>
 </div>
 

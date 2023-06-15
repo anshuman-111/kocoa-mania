@@ -3,12 +3,6 @@ import useFetch from '../Hooks/useFetch'
 
 const About = ({AboutData}) => {
 
-  // Business Number - 919163826382
-  // Add image sharing option for Whatsapp Link
-  // Image pre-load with Whatsapp Link
-
-  
-
   const {data, loading, error } = useFetch('/testimonials?populate=*')
 
   return (

@@ -1,5 +1,29 @@
 
 const Contact = ({ContactData}) => {
+
+  const canonical = document.querySelector("a[title=Share]");
+  let title = "Kocoa Mania - Eggless Cloud Bakery"
+  let text = `Where Taste Meets Art`
+  let url = import.meta.env.VITE_REACT_URL
+  const shareDetails = { url, title, text };
+
+  const handleSharing = async () => {
+    if (navigator.share) {
+      try {
+        await navigator
+          .share(shareDetails)
+          
+      } catch (error) {
+        console.log(`Oops! I couldn't share to the world because: ${error}`);
+      }
+    } else {
+      // fallback code
+      console.log(
+        "Web share is currently not supported on this browser. Please provide a callback"
+      );
+    }
+  };
+  
   // Try to remove react helmet from the App and add it to index.html...make it faster
   return (
 
@@ -53,6 +77,9 @@ const Contact = ({ContactData}) => {
               className="btn btn-secondary"
             >
               <i className="fa fa-whatsapp" aria-hidden="true"></i>
+            </a>
+            <a title="Share" className="btn btn-secondary" onClick={handleSharing}>
+              <i className="fa fa-share-alt" aria-hidden="true"></i>
             </a>
           </div>
         </div>

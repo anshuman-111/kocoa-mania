@@ -28,15 +28,7 @@ function App() {
   useEffect(() => {
     if(location.pathname==='/'){
       loadScript('/src/assets/js/index.js');
-    }
-
-    if(location.pathname.startsWith('/products')){
-      if(location.pathname !== '/products/view'){
-        loadScript('/src/assets/js/product.js');
-      }
-    }
-    
-    
+    }    
     window.scrollTo(0, 0);
   }, [location]);
   const {data, loading, error} = useFetch("/home?populate=*")

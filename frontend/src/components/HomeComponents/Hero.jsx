@@ -62,7 +62,7 @@ const Hero = ({HeroData}) => {
           <div className="showcase-title text-center">
             <h1 className="heading heading-primary text-white">
               {HeroData.wbte} <span className="text-larger"></span
-              ><span className="cursor">|</span>,<br />
+              ><span className="cursor">|</span>.<br />
               {HeroData.wate}
             </h1>
             <a
