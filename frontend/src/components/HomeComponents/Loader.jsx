@@ -11,7 +11,7 @@ const Loader = () => {
     },1500)
   return (
     <>
-    {isLoading ? 
+    {isLoading ?  
         <div className={`loader-container ${hidden}`}>
         <div className="spinner"></div>
         </div>

@@ -52,84 +52,97 @@ const Hero = ({HeroData}) => {
 
  
   return (
-    // <!-- Home -->
-    <section className="section home" id="home">
-      {/* <!-- Showcase --> */}
-    
-      <div className="showcase">
-        <div className="container">
-          {/* <!-- showcase title --> */}
-          <div className="showcase-title text-center">
-            <h1 className="heading heading-primary text-white">
-              {HeroData.wbte} <span className="text-larger"></span
-              ><span className="cursor">|</span>.<br />
-              {HeroData.wate}
-            </h1>
-            <a
-              href={`https://wa.me/${phone}/?text=Hello!. Could you please provide me with information on the options, flavors, sizes, and prices available.`}
-              className="btn btn-primary btn-red"
-              title="Order Now"
-              target='_blank'
-            >
-              <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-              Enquire Now
-            </a>
-            <Link to="/products" className="btn btn-primary btn-white"  title="Browse Cakes">
-              <i className="fab fa-safari"></i>
-              Browse Cakes
-            </Link>
-           
+      // <!-- Home -->
+      <section className="section home" id="home">
+          {/* <!-- Showcase --> */}
+
+          <div className="showcase">
+              <div className="container">
+                  {/* <!-- showcase title --> */}
+                  <div className="showcase-title text-center">
+                      <h1 className="heading heading-primary text-white">
+                          {HeroData.wbte} <span className="text-larger"></span>
+                          <span className="cursor">|</span>
+                          <br />
+                          {HeroData.wate}
+                      </h1>
+                      <a
+                          href={`https://wa.me/${phone}/?text=Hello!. Could you please provide me with information on the options, flavors, pounds, and prices available.`}
+                          className="btn btn-primary btn-red"
+                          title="Order Now"
+                          target="_blank"
+                      >
+                          <i
+                              className="fa fa-shopping-cart"
+                              aria-hidden="true"
+                          ></i>
+                          Enquire Now
+                      </a>
+                      <Link
+                          to="/products"
+                          className="btn btn-primary btn-white"
+                          title="Browse Cakes"
+                      >
+                          <i className="fab fa-safari"></i>
+                          Browse Cakes
+                      </Link>
+                  </div>
+
+                  {/* <!-- Showcase hero --> */}
+                  <div className="showcase-hero">
+                      <div className="swiper showcase-hero--slider">
+                          <div className="swiper-wrapper">
+                              {scError
+                                  ? "Oops! Something went wrong"
+                                  : scLoading
+                                  ? "Loading ..."
+                                  : showcaseData?.map((item) => (
+                                        <ShowcaseCard
+                                            item={item}
+                                            key={item.id}
+                                        />
+                                    ))}
+                          </div>
+                          <div className="btn-swipe swiper-button-next">
+                              <i className="fas fa-chevron-circle-right"></i>
+                          </div>
+                          <div className="btn-swipe swiper-button-prev">
+                              <i className="fas fa-chevron-circle-left"></i>
+                          </div>
+                          <div className="swiper-pagination"></div>
+                      </div>
+                  </div>
+              </div>
           </div>
 
-          {/* <!-- Showcase hero --> */}
-          <div className="showcase-hero">
-            <div className="swiper showcase-hero--slider">
-              <div className="swiper-wrapper">
-              {scError
-          ? "Oops! Something went wrong"
-          : scLoading
-          ? "Loading ..."
-          : showcaseData?.map((item) => <ShowcaseCard item={item} key={item.id} />
-          )}
-                
+          {/* Product carousel */}
+          <div className="products products-carousel pt-7 pb-7">
+              <div className="container">
+                  <div className="swiper carousel">
+                      <div className="swiper-wrapper">
+                          {error
+                              ? "Something went wrong!"
+                              : loading
+                              ? "loading"
+                              : data?.map((item) => (
+                                    <ProductCard
+                                        item={item}
+                                        phone={phone}
+                                        key={item.id}
+                                    />
+                                ))}
+                      </div>
+                      <div className="btn-swipe swiper-button-next">
+                          <i className="fas fa-chevron-circle-right"></i>
+                      </div>
+                      <div className="btn-swipe swiper-button-prev">
+                          <i className="fas fa-chevron-circle-left"></i>
+                      </div>
+                  </div>
               </div>
-              <div className="btn-swipe swiper-button-next">
-                <i className="fas fa-chevron-circle-right"></i>
-              </div>
-              <div className="btn-swipe swiper-button-prev">
-                <i className="fas fa-chevron-circle-left"></i>
-              </div>
-              <div className="swiper-pagination"></div>
-            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Product carousel */}
-      <div className="products products-carousel pt-7 pb-7">
-        <div className="container">
-          <div className="swiper carousel">
-            <div className="swiper-wrapper">
-            {error
-          ? "Something went wrong!"
-          : loading
-          ? "loading"
-          : data?.map((item) => <ProductCard item={item} phone={phone} key={item.id} />)}
-              
-
-            </div>
-            <div className="btn-swipe swiper-button-next">
-              <i className="fas fa-chevron-circle-right"></i>
-            </div>
-            <div className="btn-swipe swiper-button-prev">
-              <i className="fas fa-chevron-circle-left"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-  )
+      </section>
+  );
 }
 
 export default Hero

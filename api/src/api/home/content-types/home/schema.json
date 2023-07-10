@@ -61,6 +61,9 @@
     },
     "classTypeCDescription": {
       "type": "text"
+    },
+    "delivery": {
+      "type": "string"
     }
   }
 }

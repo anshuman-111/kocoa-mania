@@ -136,110 +136,154 @@ const Products = ({phone}) => {
   
 
   return (
-    <>
-    {loading ? <Loader /> : <></>}
-    
-      <div className="wrapper">
-      {/* <!-- Side navigation --> */}
-      <aside className={`side-nav ${showNav}`}>
-        <div className="nav-open" onClick={()=>{
-          if(showNav===''){
-            setShowNav('nav-hidden')
-            setRotate('rotate')
-          }else{
-            setShowNav('')
-            setRotate('')
-          }
-          }}>
-          <i className={`fa fa-arrow-right ${rotate}`} aria-hidden="true"></i>
-        </div>
-        <div className="row-top">
-          
-          {/* Center the logo  */}
-          <Link to={'/'} className="logo"  title="Kocoa Mania" onClick={
-            ()=>{
-              document.dispatchEvent('popstate')
-            }
-          }>
-            <img src={Logo} alt="kocoamania" loading="lazy" />
-          </Link>
-          <Link to={'/'} title="Back to Home" onClick={()=>{
-            document.dispatchEvent('popstate')
-          }}>
-            <i className="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to
-            Home
-            </Link>
-        </div>
-        <div className="tabs row-bottom">
-          <ul className="tab-links" role="list">
-          {error
-          ? "Oops! Something went wrong"
-          : loading
-          ? "Loading ..."
-          : data?.map((item) =>
-          <li key={item?.id} onClick={()=>{
-            handleCategoryClick(item?.attributes?.title)
-            
-          }}>
-            <CategoryTab item={item} active={categorySelection} />
-          </li>
-          )}
-            
-          </ul>
-        </div>
-      </aside>
+      <>
+          {loading ? <Loader /> : <></>}
 
-      {/* <!-- Product gallery --> */}
-      <main className="product-gallery">
+          <div className="wrapper">
+              {/* <!-- Side navigation --> */}
+              <aside className={`side-nav ${showNav}`}>
+                  <div
+                      className="nav-open"
+                      onClick={() => {
+                          if (showNav === "") {
+                              setShowNav("nav-hidden");
+                              setRotate("rotate");
+                          } else {
+                              setShowNav("");
+                              setRotate("");
+                          }
+                      }}
+                  >
+                      <i
+                          className={`fa fa-arrow-right ${rotate}`}
+                          aria-hidden="true"
+                      ></i>
+                  </div>
+                  <div className="row-top">
+                      {/* Center the logo  */}
+                      <Link
+                          to={"/"}
+                          className="logo"
+                          title="Kocoa Mania"
+                          onClick={() => {
+                              document.dispatchEvent("popstate");
+                          }}
+                      >
+                          <img src={Logo} alt="kocoamania" loading="lazy" />
+                      </Link>
+                      <Link
+                          to={"/"}
+                          title="Back to Home"
+                          onClick={() => {
+                              document.dispatchEvent("popstate");
+                          }}
+                      >
+                          <i
+                              className="fa fa-arrow-circle-left"
+                              aria-hidden="true"
+                          ></i>{" "}
+                          Back to Home
+                      </Link>
+                  </div>
+                  <div className="tabs row-bottom">
+                      <ul className="tab-links" role="list">
+                          {error
+                              ? "Oops! Something went wrong"
+                              : loading
+                              ? "Loading ..."
+                              : data?.map((item) => (
+                                    <li
+                                        key={item?.id}
+                                        onClick={() => {
+                                            handleCategoryClick(
+                                                item?.attributes?.title
+                                            );
+                                        }}
+                                    >
+                                        <CategoryTab
+                                            item={item}
+                                            active={categorySelection}
+                                        />
+                                    </li>
+                                ))}
+                      </ul>
+                  </div>
+              </aside>
 
+              {/* <!-- Product gallery --> */}
+              <main className="product-gallery">
+                  {/* <!-- Searchbar --> */}
+                  <section className="searchbar">
+                      {/* <!-- searchbox --> */}
+                      <div className="searchbox">
+                          <input
+                              type="text"
+                              name="search"
+                              id="search"
+                              placeholder="Search our collection"
+                              onChange={(e) => setSearchInput(e.target.value)}
+                          />
 
-        {/* <!-- Searchbar --> */}
-        <section className="searchbar">
-          {/* <!-- searchbox --> */}
-          <div className="searchbox">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              placeholder="Search the cakes"
-              onChange={e => 
-                setSearchInput(e.target.value)}
-            />
+                          {/* <!-- Searchbox result --> */}
+                          {!searchBox ? (
+                              <></>
+                          ) : (
+                              <div className="searchbox-result">
+                                  <ul role="list">
+                                      {searchBoxList[0].length < 1 &&
+                                      searchInput !== "" ? (
+                                          <p>
+                                              Sorry! No results found for{" "}
+                                              {searchInput}{" "}
+                                          </p>
+                                      ) : (
+                                          searchBoxList[0].map(
+                                              (item, index) => (
+                                                  <li
+                                                      key={index}
+                                                      onClick={() => {
+                                                          setSearchInput(item);
+                                                          document.getElementById(
+                                                              "search"
+                                                          ).value = item;
+                                                          setSearchBox(false);
+                                                          setResultclick(true);
+                                                      }}
+                                                  >
+                                                      <a title={item}>{item}</a>
+                                                  </li>
+                                              )
+                                          )
+                                      )}
+                                  </ul>
+                              </div>
+                          )}
+                      </div>
 
-            {/* <!-- Searchbox result --> */}
-            {!searchBox ? <></> :
-              <div className="searchbox-result">
-              <ul role="list">
-                {searchBoxList[0].length < 1 && searchInput!=='' ? <p>Sorry! No results found for {searchInput} </p> : 
-                searchBoxList[0].map((item, index)=>
-                  <li key={index} onClick={()=>{
-                      setSearchInput(item)
-                      document.getElementById('search').value = item
-                      setSearchBox(false)
-                      setResultclick(true)
-                  }}><a title={item}>{item}</a></li>
-                )
-                }
-                
-                
-              </ul>
-            </div>
-            }
-            </div>
-            
-          <input type="submit" value="Search" onClick={handleSearchSubmit}/>
-    </section>
-        
-        {/* <!-- Tab content --> */}
-        {searchList.length < 1 ?  
-        <ProductDisplay productList={categoryWiseList.length < 1 ? fetchedList : categoryWiseList} phone={phone}/> :
-        <SearchResults searchList={searchList}/>
-        }
-          
-      </main> 
-    </div>
-    </>
-  )
+                      <input
+                          type="submit"
+                          value="Search"
+                          onClick={handleSearchSubmit}
+                      />
+                  </section>
+
+                  {/* <!-- Tab content --> */}
+                  {searchList.length < 1 ? (
+                      <ProductDisplay
+                          productList={
+                              categoryWiseList.length < 1
+                                  ? fetchedList
+                                  : categoryWiseList
+                          }
+                          phone={phone}
+                      />
+                  ) : (
+                      <SearchResults searchList={searchList} />
+                  )}
+              </main>
+          </div>
+      </>
+  );
 }
 
 export default Products

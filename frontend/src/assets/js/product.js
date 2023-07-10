@@ -1,10 +1,10 @@
 'use strict';
 
-const sideNav = document.querySelector('.side-nav');
-const navArrow = document.querySelector('.fa-arrow-right');
-const tabLinks = document.querySelectorAll('.tab-links a');
-const tabItems = document.querySelectorAll('.tab-item');
-const navOpenBtn = document.querySelector('.nav-open');
+// const sideNav = document.querySelector('.side-nav');
+// const navArrow = document.querySelector('.fa-arrow-right');
+// const tabLinks = document.querySelectorAll('.tab-links a');
+// const tabItems = document.querySelectorAll('.tab-item');
+// const navOpenBtn = document.querySelector('.nav-open');
 
 // Toggling side nav
 // const toggleSideNav = function () {

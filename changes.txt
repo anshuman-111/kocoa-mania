@@ -1,0 +1,15 @@
+1. Change Typing effect color to Pink -- only animated words 
+2. Add Wiggle (back and forth) Animation to arrow icon for side navigation on Products Page 
+3. Change white to pink or other color for Arrow on products PAGE 
+4. Hero Pictures (next to the the typing effect) will be posters... increase height by 10%  decrease width by 10% 
+5. Add a new carousel under the product coursel on the Home PAGE ----> MAJOR
+6. Add a reel card in the new carousel with Reel link and reel screenshot on click will open Instagram 
+7. Clicking view more should show more categories 
+8. Delivery text at the bottom - Connect to model API // Ignore this
+9. Move Carousel Arrows outside the carousel 
+10. Remove FSSAI certificate PDF and just add "Certified" under the logo
+11. Add 100% Veg Logo to footer 
+12. Add EggFree Logo to footer 
+13. Add Socia Media Links to the mobile navigation 
+14. Add 100% Veg Logo to mobile navigation 
+15. Add EggFree Logo to mobile navigation 
